@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UGAFODE Homepage Clone</title>
+
+    <style>
+        /* ====== Variables & Reset ====== */
+        
+         :root {
+            --red: #d60000;
+            --white: #fff;
+            --gray-dark: #222;
+            --gray-light: #f7f7f7;
+            --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            --transition: 0.3s ease-in-out;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background: var(--white);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        
+        a:hover,
+        a:focus {
+            color: var(--red);
+            outline: none;
+        }
+        
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        button {
+            cursor: pointer;
+        }
+        /* ====== HEADER & NAVIGATION ====== */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid #ddd;
+            z-index: 10000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /* Logo */
+        
+        .nav-logo img {
+            height: 40px;
+        }
+        /* Nav menu */
+        
+        nav {
+            position: relative;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 1.75rem;
+            align-items: center;
+        }
+        
+        nav>ul>li {
+            position: relative;
+        }
+        
+        nav>ul>li>a {
+            padding: 0.5rem 0;
+            display: inline-block;
+        }
+        
+        nav>ul>li:hover>a,
+        nav>ul>li:focus-within>a {
+            color: var(--red);
+        }
+        /* Dropdown menus */
+        
+        nav ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            min-width: 180px;
+            z-index: 1100;
+        }
+        
+        nav ul li:hover>ul,
+        nav ul li:focus-within>ul {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        nav ul li ul li {
+            position: relative;
+        }
+        
+        nav ul li ul li a {
+            display: block;
+            padding: 0.55rem 1.1rem;
+            font-weight: 400;
+            color: var(--gray-dark);
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background: var(--red);
+            color: var(--white);
+        }
+        /* Multi-level dropdown */
+        
+        nav ul li ul li ul {
+            top: 0;
+            left: 100%;
+            border: 1px solid #ddd;
+            box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.12);
+        }
+        /* Mobile nav toggle */
+        
+        #nav-toggle {
+            display: none;
+        }
+        
+        .nav-toggle-label {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 22px;
+            cursor: pointer;
+        }
+        
+        .nav-toggle-label span {
+            display: block;
+            height: 3px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+        /* Responsive nav */
+        
+        @media (max-width: 980px) {
+            nav ul {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                width: 260px;
+                height: calc(100vh - 60px);
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                gap: 0;
+                border-left: 1px solid #ddd;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+                z-index: 10001;
+            }
+            nav ul li ul {
+                position: relative;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none;
+                border: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease;
+            }
+            nav ul li:hover>ul,
+            nav ul li:focus-within>ul {
+                max-height: 500px;
+            }
+            nav>ul>li>a {
+                padding: 1rem 1.5rem;
+                display: block;
+                border-bottom: 1px solid #eee;
+            }
+            #nav-toggle:checked+nav ul {
+                transform: translateX(0);
+            }
+            .nav-toggle-label {
+                display: flex;
+            }
+        }
+        /* ====== HERO SLIDER ====== */
+        
+        .hero-slider {
+            position: relative;
+            margin-top: 60px;
+            max-height: 550px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0;
+            animation: slidefade 15s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+        
+        .slide:nth-child(1) {
+            background-image: url('https://www.ugafode.co.ug/wp-content/uploads/2021/02/ugafode_hero_slider_01.jpg');
+            animation-delay: 0s;
+        }
+        
+        .slide:nth-child(2) {
+            background-image: url('https://www.ugafode.co.ug/wp-content/uploads/2021/02/ugafode_hero_slider_02.jpg');
+            animation-delay: 5s;
+        }
+        
+        .slide:nth-child(3) {
+            background-image: url('https://www.ugafode.co.ug/wp-content/uploads/2021/02/ugafode_hero_slider_03.jpg');
+            animation-delay: 10s;
+        }
+        
+        @keyframes slidefade {
+            0%,
+            33.33% {
+                opacity: 1;
+                z-index: 1;
+            }
+            33.34%,
+            100% {
+                opacity: 0;
+                z-index: 0;
+            }
+        }
+        
+        .slide-content {
+            background: rgba(0, 0, 0, 0.45);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            max-width: 650px;
+            color: var(--white);
+            text-align: center;
+            animation: fadeUp 2.5s ease forwards;
+        }
+        
+        .slide-content h2 {
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .slide-content p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        
+        .slide-content a.btn {
+            background-color: var(--red);
+            color: var(--white);
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(214, 0, 0, 0.6);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        
+        .slide-content a.btn:hover,
+        .slide-content a.btn:focus {
+            background-color: #a30000;
+            box-shadow: 0 6px 20px rgba(163, 0, 0, 0.8);
+            outline: none;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* ====== PRODUCTS & CARDS ====== */
+        
+        section.products {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 1rem;
+        }
+        
+        section.products h2 {
+            text-align: center;
+            color: var(--red);
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 3px 14px rgb(0 0 0 / 0.08);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            padding: 2rem 1.5rem 2.5rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .product-card:hover,
+        .product-card:focus-within {
+            box-shadow: 0 6px 25px rgb(214 0 0 / 0.4);
+            transform: scale(1.04);
+            outline: none;
+        }
+        
+        .product-icon {
+            width: 65px;
+            height: 65px;
+            margin-bottom: 1.25rem;
+            fill: var(--red);
+        }
+        
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--red);
+            font-weight: 700;
+        }
+        
+        .product-card p {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-card a.btn {
+            background-color: var(--red);
+            color: var(--white);
+            padding: 0.6rem 2.3rem;
+            border-radius: 30px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(214, 0, 0, 0.6);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card a.btn:hover,
+        .product-card a.btn:focus {
+            background-color: #a30000;
+            box-shadow: 0 7px 22px rgba(163, 0, 0, 0.9);
+            outline: none;
+        }
+        /* ====== ABOUT / INFO SECTION ====== */
+        
+        section.about-info {
+            max-width: 1200px;
+            margin: 4rem auto 3rem;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1 1 460px;
+        }
+        
+        .about-text h2 {
+            font-size: 2.6rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+        
+        .about-img {
+            flex: 1 1 420px;
+        }
+        
+        .about-img img {
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(214, 0, 0, 0.22);
+        }
+        /* ====== CALL TO ACTION ====== */
+        
+        section.cta {
+            max-width: 900px;
+            margin: 4rem auto 6rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--red);
+            color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(214, 0, 0, 0.35);
+        }
+        
+        section.cta h2 {
+            font-size: 2.7rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+        
+        section.cta a.btn {
+            background: var(--white);
+            color: var(--red);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            border-radius: 30px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.8);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        section.cta a.btn:hover,
+        section.cta a.btn:focus {
+            background-color: #f0f0f0;
+            color: #9a0000;
+            outline: none;
+        }
+        /* ====== FOOTER ====== */
+        
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 3rem 1rem 1.5rem;
+        }
+        
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex: 1 1 230px;
+        }
+        
+        footer h3 {
+            color: var(--red);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        footer a {
+            display: block;
+            margin-bottom: 0.65rem;
+            color: #ccc;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+        
+        footer a:hover,
+        footer a:focus {
+            color: var(--red);
+            outline: none;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #444;
+            border-radius: 50%;
+            color: var(--white);
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icons a:hover,
+        .social-icons a:focus {
+            background: var(--red);
+            outline: none;
+        }
+        /* Newsletter */
+        
+        .newsletter form {
+            display: flex;
+            margin-top: 0.75rem;
+        }
+        
+        .newsletter input[type="email"] {
+            flex: 1;
+            padding: 0.45rem 1rem;
+            border-radius: 20px 0 0 20px;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .newsletter input[type="email"]:focus {
+            outline: 2px solid var(--red);
+        }
+        
+        .newsletter button {
+            background: var(--red);
+            border: none;
+            color: var(--white);
+            padding: 0 1.5rem;
+            font-weight: 700;
+            border-radius: 0 20px 20px 0;
+            letter-spacing: 0.9px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .newsletter button:hover,
+        .newsletter button:focus {
+            background: #a30000;
+            outline: none;
+        }
+        /* Copyright text */
+        
+        .footer-copy {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            color: #666;
+        }
+        /* ====== FLOATING CHAT BUTTON ====== */
+        
+        .chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--red);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 15px rgba(214, 0, 0, 0.7);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 28px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        .chat-btn:hover,
+        .chat-btn:focus {
+            box-shadow: 0 8px 30px rgba(214, 0, 0, 0.9);
+            transform: scale(1.1);
+            outline: none;
+        }
+        
+        .chat-btn::after {
+            content: "Chat with us";
+            position: absolute;
+            bottom: 100%;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--red);
+            color: var(--white);
+            padding: 0.25rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .chat-btn:hover::after,
+        .chat-btn:focus::after {
+            opacity: 1;
+        }
+        /* ====== ACCESSIBILITY: VISUALLY HIDDEN ====== */
+        
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0 0 0 0) !important;
+            border: 0 !important;
+        }
+        /* ====== RESPONSIVE ADJUSTMENTS ====== */
+        
+        @media (max-width: 720px) {
+            .slide-content h2 {
+                font-size: 1.9rem;
+            }
+            .slide-content p {
+                font-size: 1rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            section.about-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text,
+            .about-img {
+                flex: 1 1 100%;
+            }
+            .footer-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-col {
+                flex: 1 1 100%;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER NAVIGATION -->
+    <header role="banner" aria-label="Primary Navigation">
+        <div class="nav-wrapper">
+            <a href="#" class="nav-logo" aria-label="UGAFODE Homepage">
+                <img src="https://www.ugafode.co.ug/wp-content/uploads/2021/01/ugafode-logo.png" alt="UGAFODE Logo" />
+            </a>
+            <input type="checkbox" id="nav-toggle" aria-label="Toggle menu" />
+            <label for="nav-toggle" class="nav-toggle-label" tabindex="0" aria-controls="main-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </label>
+            <nav role="navigation" id="main-menu">
+                <ul>
+                    <li tabindex="0"><a href="#">Home</a></li>
+                    <li tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <a href="#">About Us</a>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <a href="#">Products & Services</a>
+                        <ul>
+                            <li><a href="#">Loans</a></li>
+                            <li><a href="#">Savings</a></li>
+                            <li><a href="#">Business Solutions</a></li>
+                        </ul>
+                    </li>
+                    <li tabindex="0" aria-haspopup="true" aria-expanded="false">
+                        <a href="#">Resources</a>
+                        <ul>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Downloads</a></li>
+                        </ul>
+                    </li>
+                    <li tabindex="0"><a href="#">Get In Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SLIDER -->
+    <section class="hero-slider" aria-label="Homepage slider">
+        <article class="slide" aria-roledescription="slide" aria-label="Affordable Loans Slide">
+            <div class="slide-content" role="region" aria-labelledby="slide1-heading">
+                <h2 id="slide1-heading">Affordable Loan Products</h2>
+                <p>Flexible loan options designed to fit your needs.</p>
+                <a href="#" class="btn">Apply Now</a>
+            </div>
+        </article>
+        <article class="slide" aria-roledescription="slide" aria-label="Secure Savings Slide">
+            <div class="slide-content" role="region" aria-labelledby="slide2-heading">
+                <h2 id="slide2-heading">Secure Savings Services</h2>
+                <p>Safe, reliable saving plans for your future.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </article>
+        <article class="slide" aria-roledescription="slide" aria-label="Business Solutions Slide">
+            <div class="slide-content" role="region" aria-labelledby="slide3-heading">
+                <h2 id="slide3-heading">Business Solutions</h2>
+                <p>Tailored financial services to grow your business.</p>
+                <a href="#" class="btn">Discover</a>
+            </div>
+        </article>
+    </section>
+
+    <!-- PRODUCTS & SERVICES CARDS -->
+    <section class="products" aria-label="Loan and service products">
+        <h2>Our Products & Services</h2>
+        <div class="products-grid">
+            <!-- Loan Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="loan-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <path d="M12 52h40v4H12zM22 44h20v4H22zM32 36h8v4h-8z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+                <h3 id="loan-card-title">Loans</h3>
+                <p>Flexible loan options tailored to your needs with competitive interest rates.</p>
+                <a href="#" class="btn" role="button">Apply Now</a>
+            </article>
+
+            <!-- Savings Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="savings-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="3" fill="none"/>
+        <path d="M32 12v40M12 32h40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+                <h3 id="savings-card-title">Savings</h3>
+                <p>Secure and reliable savings plans designed to help you build your future.</p>
+                <a href="#" class="btn" role="button">Learn More</a>
+            </article>
+
+            <!-- Business Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="business-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <rect x="12" y="24" width="40" height="16" fill="none" stroke="currentColor" stroke-width="3" rx="4"/>
+        <path d="M20 24v-8h24v8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+                <h3 id="business-card-title">Business Solutions</h3>
+                <p>Customized financial services aimed at helping your business succeed.</p>
+                <a href="#" class="btn" role="button">Discover</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-info" aria-labelledby="about-heading">
+        <div class="about-text">
+            <h2 id="about-heading">Our Story</h2>
+            <p>
+                UGAFODE Microfinance Limited started as a humble credit union and has grown to become one of Uganda’s leading microfinance institutions. We are committed to providing accessible financial services to empower communities and foster sustainable economic
+                growth.
+            </p>
+            <p>
+                Our values of integrity, innovation, and inclusivity drive us every day as we work to build stronger futures for our clients.
+            </p>
+        </div>
+        <div class="about-img">
+            <img src="https://via.placeholder.com/450x320?text=Our+Story" alt="UGAFODE Our Story Image" />
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta" aria-label="Call to action to open account">
+        <h2>Open an Account with UGAFODE Today</h2>
+        <a href="#" class="btn">Get Started</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo" aria-label="Site Footer">
+        <div class="footer-wrapper">
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Products & Services</a>
+                <a href="#">Resources</a>
+                <a href="#">Get In Touch</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>Plot 12, Kira Road, Kampala, Uganda</p>
+                <p>Phone: +256 123 456 789</p>
+                <p>Email: info@ugafode.co.ug</p>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons" aria-label="Social media links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22 12.073C22 6.477 17.523 2 12 2S2 6.477 2 12.073c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54v-2.89h2.54v-2.2c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.465h-1.26c-1.243 0-1.63.771-1.63 1.562v1.868h2.773l-.443 2.89h-2.33v6.987C18.343 21.2 22 17.064 22 12.073z"/>
+          </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter" title="Twitter">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.26 4.26 0 001.87-2.35 8.4 8.4 0 01-2.7 1.03 4.22 4.22 0 00-7.2 3.84 12 12 0 01-8.7-4.4 4.22 4.22 0 001.3 5.62 4.21 4.21 0 01-1.92-.53v.05a4.22 4.22 0 003.39 4.14 4.24 4.24 0 01-1.9.07 4.23 4.23 0 003.95 2.95 8.48 8.48 0 01-5.26 1.82 8.65 8.65 0 01-1.01-.06 12 12 0 006.49 1.9c7.79 0 12.05-6.46 12.05-12.05 0-.18 0-.35-.01-.53A8.6 8.6 0 0022.46 6z"/>
+          </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-9.1 14v-6H7v6h2.9zm-1.5-7a1.67 1.67 0 11-.002-3.338 1.67 1.67 0 01.002 3.338zm8.6 7h-3v-3c0-.9-.7-1.5-1.4-1.5-.9 0-1.3.6-1.3 1.5v3H9v-6h2.8v.8h.1a3 3 0 012.8-1.5c2 0 3.4 1.3 3.4 3.8v3.9z"/>
+          </svg>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- FLOATING CHAT BUTTON -->
+            <button class="chat-btn" aria-label="Chat with us" tabindex="0" title="Chat with us">
+  <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M21 6a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14l4 4V6z" />
+  </svg>
+</button>
+
+</body>
+
+</html>

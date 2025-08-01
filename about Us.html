@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UGAFODE - About Us</title>
+    <style>
+        /* Base Styling */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Colors */
+        
+         :root {
+            --red: #d60000;
+            --white: #ffffff;
+        }
+        /* Navigation Bar */
+        
+        nav {
+            background-color: var(--white);
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--red);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav li:hover>ul {
+            display: block;
+        }
+        
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            border: 1px solid #ccc;
+        }
+        
+        nav ul ul li {
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+        }
+        /* Hero Banner */
+        
+        .hero {
+            background: url('image/Group Loan.jpg') center center / cover no-repeat;
+            color: #ffffff;
+            /* fallback if var(--white) is undefined */
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            /* dark overlay for better text contrast */
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
+            z-index: 2;
+            position: relative;
+            background: transparent;
+            /* removed black box effect */
+            color: #fff;
+            backdrop-filter: blur(3px);
+            /* optional modern text enhancement */
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Section */
+        
+        section {
+            padding: 3rem 2rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--red);
+            font-size: 2rem;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        /* Image + Text Block */
+        
+        .info-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .info-block img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        
+        .info-block .text {
+            flex: 1;
+        }
+        /* Footer */
+        
+        footer {
+            background: #222;
+            color: var(--white);
+            padding: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .footer-col {
+            flex: 1 1 200px;
+        }
+        
+        .footer-col h4 {
+            margin-bottom: 1rem;
+            color: var(--red);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ccc;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+        /* ===== Animations ===== */
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* ===== Media Queries ===== */
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            .story-content {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">UGAFODE</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">About Us</a>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Vision & Mission</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero">
+        <h1>About Us</h1>
+    </div>
+
+    <!-- Our Story Section -->
+    <section>
+        <h2 class="section-title">Our Story</h2>
+        <div class="info-block">
+            <img src="image/Virgin Finance.jpg" alt="Our Story">
+            <div class="text">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis tellus in dolor tincidunt, ut scelerisque nisi sollicitudin. Vivamus eget nisi id neque eleifend bibendum.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision, Mission, Values Cards -->
+    <section>
+        <h2 class="section-title">Our Principles</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>To be the leading provider of inclusive financial services.</p>
+            </div>
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>To provide relevant, inclusive, and accessible financial solutions to underserved communities.</p>
+            </div>
+            <div class="card">
+                <h3>Our Core Values</h3>
+                <p>Integrity, professionalism, innovation, teamwork, and customer focus.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>123 UGAFODE Avenue<br>Kampala, Uganda<br>Email: info@ugafode.co.ug</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

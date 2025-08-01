@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UGAFODE Microfinance LTD (MDI)</title>
+
+
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UGAFODE Microfinance LTD (MDI)</title>
+    <style>
+        /* Reset and base styles */
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #fff;
+            color: #333;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Top Bar */
+        
+        .top-bar {
+            background: #d60000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        /* Header */
+        
+        header {
+            background: #fff;
+            border-bottom: 3px solid #d60000;
+            padding: 15px 5%;
+        }
+        /* Navbar */
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: #d60000;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav a {
+            color: #d60000;
+            font-weight: bold;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        nav li:hover>a {
+            background: #d60000;
+            color: #fff;
+            border-radius: 5px;
+        }
+        
+        nav ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            background: white;
+            border: 1px solid #d60000;
+            flex-direction: column;
+            z-index: 10;
+        }
+        
+        nav ul li:hover ul {
+            display: flex;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 15px;
+            white-space: nowrap;
+        }
+        /* Hero Section */
+        /* Hero Section */
+        
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(228, 225, 225, 0.65);
+        }
+        
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        /* Slides as background containers */
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            animation: fadeSlide 24s infinite;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 20%;
+            color: white;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        /* Set background images */
+        
+        .slide1 {
+            background-image: url('image/market.jpg');
+            animation-delay: 0s;
+        }
+        
+        .slide2 {
+            background-image: url('image/school1.jpg');
+            animation-delay: 8s;
+        }
+        
+        .slide3 {
+            background-image: url('image/bada1.jpg');
+            animation-delay: 16s;
+        }
+        
+        @keyframes fadeSlide {
+            0%,
+            100% {
+                opacity: 0;
+            }
+            10%,
+            30% {
+                opacity: 1;
+            }
+            40%,
+            90% {
+                opacity: 0;
+            }
+        }
+        /* Caption Styling with smooth fade and slide */
+        
+        .caption {
+            max-width: 700px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: captionFadeSlide 24s ease-in-out infinite;
+            animation-fill-mode: forwards;
+            padding: 0 20px;
+        }
+        /* Sync captions with slides */
+        
+        .slide1 .caption {
+            animation-delay: 0s;
+        }
+        
+        .slide2 .caption {
+            animation-delay: 8s;
+        }
+        
+        .slide3 .caption {
+            animation-delay: 16s;
+        }
+        
+        @keyframes captionFadeSlide {
+            0%,
+            40%,
+            100% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            10%,
+            30% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .caption h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        .caption p {
+            font-size: 1.3rem;
+            margin-top: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        /* Sections padding */
+        
+        .features,
+        .cta,
+        .testimonials,
+        .contact,
+        .newsletter {
+            padding: 60px 5%;
+        }
+        /* Features Section */
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        /* Animated Heading */
+        
+        .animated-heading {
+            text-align: center;
+            color: #d60000;
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            animation: pulseText 4s infinite;
+        }
+        
+        @keyframes pulseText {
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Card Row */
+        
+        .card-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        /* Banking Section Cards */
+        
+        .banking-section .card {
+            flex: 1 1 250px;
+            max-width: 280px;
+            border: 2px solid #d60000;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: white;
+            text-align: center;
+            animation: slideUpFade 1s ease forwards;
+        }
+        
+        .banking-section .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(214, 0, 0, 0.2);
+        }
+        
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Small Button */
+        
+        .view-all-btn-small {
+            background: #d60000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .view-all-btn-small:hover {
+            background: #a10000;
+        }
+        /* ====== PRODUCTS & CARDS ====== */
+        
+        section.products {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+        /* Section Heading */
+        
+        section.products h2 {
+            text-align: center;
+            color: #d60000;
+            /* Strong red */
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        /* Product Grid Layout */
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        /* Individual Product Card */
+        
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            padding: 2rem 1.5rem 2.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover,
+        .product-card:focus-within {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(214, 0, 0, 0.4);
+            outline: none;
+        }
+        /* Product Icon Styling */
+        
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            fill: #d60000;
+        }
+        /* Card Headings (h3) */
+        
+        .product-card h3 {
+            font-size: 1.6rem;
+            color: #d60000;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Card Description */
+        
+        .product-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333333;
+            margin-bottom: 2rem;
+        }
+        /* CTA Button */
+        
+        .product-card a.btn {
+            display: inline-block;
+            background-color: #d60000;
+            color: #ffffff;
+            padding: 0.7rem 2.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(214, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .product-card h3 {
+            font-size: 1.6rem;
+            color: #d60000;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-card a.btn:hover,
+        .product-card a.btn:focus {
+            background-color: #a30000;
+            box-shadow: 0 10px 25px rgba(163, 0, 0, 0.8);
+            outline: none;
+        }
+        /* Wealth Section */
+        
+        .wealth-section {
+            padding: 60px 5%;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+        
+        .wealth-heading {
+            text-align: center;
+            color: #d60000;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            animation: pulseText 4s infinite;
+        }
+        
+        .wealth-slider-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        
+        .wealth-slider {
+            display: flex;
+            width: calc(250px * 16);
+            /* 8 cards repeated */
+            animation: slideCards 32s linear infinite;
+        }
+        
+        .wealth-card {
+            width: 250px;
+            margin: 0 10px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .wealth-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .wealth-card p {
+            padding: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @keyframes slideCards {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        /* Generic Card */
+        
+        .card {
+            border: 2px solid #d60000;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            background: #fff;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(214, 0, 0, 0.2);
+        }
+        
+        .card h3 {
+            color: #d60000;
+            margin-bottom: 10px;
+        }
+        
+        .card a {
+            color: #d60000;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        /* Call To Action Section */
+        
+        .cta {
+            text-align: center;
+            background: #f5f5f5;
+        }
+        
+        .cta a {
+            background: #d60000;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        /* Newsletter Section */
+        
+        .newsletter {
+            background: #d60000;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .newsletter input[type="email"] {
+            padding: 12px;
+            width: 250px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .newsletter button {
+            padding: 12px 20px;
+            background: #fff;
+            color: #d60000;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Testimonial Section */
+        
+        .testimonial {
+            max-width: 700px;
+            margin: auto;
+            font-style: italic;
+            color: #444;
+        }
+        /* ====== CALL TO ACTION ====== */
+        
+        section.cta {
+            max-width: 900px;
+            margin: 4rem auto 6rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--red);
+            color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(214, 0, 0, 0.35);
+        }
+        
+        section.cta h2 {
+            font-size: 2.7rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+        
+        section.cta a.btn {
+            background: var(--white);
+            color: var(--red);
+            padding: 1rem 3rem;
+            font-weight: 700;
+            border-radius: 30px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.8);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        section.cta a.btn:hover,
+        section.cta a.btn:focus {
+            background-color: #f0f0f0;
+            color: #9a0000;
+            outline: none;
+        }
+        /* Footer */
+        
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        footer .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        footer a {
+            color: #fff;
+            font-size: 0.95em;
+        }
+        /* Responsive Styles */
+        
+        @media (max-width: 768px) {
+            .caption {
+                font-size: 14px;
+                padding: 10px;
+            }
+            .slides {
+                animation: none;
+            }
+            .slide {
+                position: relative;
+                opacity: 1 !important;
+                animation: none !important;
+            }
+        }
+        /* ===== CHAT WITH US BUTTON & DROPDOWN ===== */
+        /* Container fixed bottom right */
+        
+        .chat-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 10000;
+        }
+        /* Hide the checkbox input */
+        
+        #chat-toggle {
+            display: none;
+        }
+        /* Label as the round chat button */
+        
+        .chat-btn {
+            background: var(--ugafode-red);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ugafode-white);
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+        
+        .chat-btn:hover,
+        .chat-btn:focus {
+            background: #a50000;
+            outline: none;
+        }
+        /* Dropdown panel hidden by default */
+        
+        .chat-dropdown {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: var(--ugafode-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            min-width: 180px;
+            justify-content: center;
+        }
+        /* Show dropdown when checkbox checked */
+        
+        #chat-toggle:checked~.chat-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        /* Individual icon buttons in dropdown */
+        
+        .chat-dropdown a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--ugafode-red);
+            border-radius: 50%;
+            color: var(--ugafode-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .chat-dropdown a:hover,
+        .chat-dropdown a:focus {
+            background: #a50000;
+            outline: none;
+        }
+        /* Tooltip labels on hover/focus */
+        
+        .chat-dropdown a[aria-label]:hover::after,
+        .chat-dropdown a[aria-label]:focus::after {
+            content: attr(aria-label);
+            position: absolute;
+            bottom: 100%;
+            margin-bottom: 6px;
+            background: var(--ugafode-red);
+            color: var(--ugafode-white);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        /* ===== RESPONSIVE ===== */
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--ugafode-red);
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            /* Show menu when checkbox toggled */
+            #nav-toggle:checked+.nav-toggle-label+.nav-menu {
+                max-height: 300px;
+            }
+            .nav-menu>li>a {
+                padding: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            .nav-menu li ul {
+                position: static;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                box-shadow: none;
+                background: #b30000;
+                border-radius: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            /* Dropdown toggle on mobile with focus */
+            .nav-menu li:focus-within>ul {
+                max-height: 500px;
+                overflow: visible;
+            }
+            /* Show toggle button */
+            .nav-toggle-label {
+                display: block;
+                font-size: 1.8rem;
+                user-select: none;
+            }
+            .nav-container {
+                justify-content: space-between;
+            }
+            /* Hero height smaller on mobile */
+            .hero {
+                height: 250px;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">Call us: (+256) 800 223 900 • Mobile Money • Agent Banking</div>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">VIRGIN FINANCE</div>
+            <nav>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="about Us.html">About Us ▾</a>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products ▾</a>
+                        <ul>
+                            <li><a href="#">Savings</a></li>
+                            <li><a href="#">Loans</a></li>
+                            <li><a href="#">Smart Woman</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="slides">
+            <div class="slide slide1">
+                <div class="caption">
+                    <h2>Empowering Communities</h2>
+                    <p>Supporting Ugandans through financial inclusion.</p>
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="caption">
+                    <h2>Accessible Loans</h2>
+                    <p>Flexible and affordable lending for everyone.</p>
+                </div>
+            </div>
+            <div class="slide slide3">
+                <div class="caption">
+                    <h2>Grow with VIRGIN FINANCE</h2>
+                    <p>Saving for a brighter future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Grow Your Wealth Securely Section -->
+    <section class="wealth-section">
+        <h2 class="wealth-heading">Grow Your Wealth Securely</h2>
+
+        <div class="wealth-slider-container">
+            <div class="wealth-slider">
+                <!-- First 8 cards -->
+                <div class="wealth-card"><img src="image/Fixed Deposits.webp" alt="">
+                    <p>Fixed Deposits</p>
+                </div>
+                <div class="wealth-card"><img src="image/Investment Plans.jpg" alt="">
+                    <p>Investment Plans</p>
+                </div>
+                <div class="wealth-card"><img src="image/Mobile Banking.jpg" alt="">
+                    <p>Mobile Banking</p>
+                </div>
+                <div class="wealth-card"><img src="image/Digital Walle.jpg" alt="">
+                    <p>Digital Wallet</p>
+                </div>
+                <div class="wealth-card"><img src="image/Business Accounts.jpg" alt="">
+                    <p>Business Accounts</p>
+                </div>
+                <div class="wealth-card"><img src="image/Secure Savings.jpg" alt="">
+                    <p>Secure Savings</p>
+                </div>
+                <div class="wealth-card"><img src="image/Wealth Advisory.jpg" alt="">
+                    <p>Wealth Advisory</p>
+                </div>
+                <div class="wealth-card"><img src="image/Insurance Plans.jpg" alt="">
+                    <p>Insurance Plans</p>
+                </div>
+
+                <!-- Duplicate 8 cards for smooth loop -->
+                <div class="wealth-card"><img src="image/Fixed Deposits.webp" alt="">
+                    <p>Fixed Deposits</p>
+                </div>
+                <div class="wealth-card"><img src="image/Investment Plans.jpg" alt="">
+                    <p>Investment Plans</p>
+                </div>
+                <div class="wealth-card"><img src="image/Mobile Banking.jpg" alt="">
+                    <p>Mobile Banking</p>
+                </div>
+                <div class="wealth-card"><img src="image/Digital Walle.jpg" alt="">
+                    <p>Digital Wallet</p>
+                </div>
+                <div class="wealth-card"><img src="image/Business Accounts.jpg" alt="">
+                    <p>Business Accounts</p>
+                </div>
+                <div class="wealth-card"><img src="image/Secure Savings.jpg" alt="">
+                    <p>Secure Savings</p>
+                </div>
+                <div class="wealth-card"><img src="image/Wealth Advisory.jpg" alt="">
+                    <p>Wealth Advisory</p>
+                </div>
+                <div class="wealth-card"><img src="image/Insurance Plans.jpg" alt="">
+                    <p>Insurance Plans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="banking-section" style="background: url('image/farm.jpg') center/cover no-repeat; position: relative; padding: 60px 5%;">
+        <div class="glass-bg">
+            <h2 class="animated-heading">Banking for Your Needs</h2>
+
+            <div class="card-row">
+                <div class="card pop-card">
+                    <h3>Loans</h3>
+                    <p>Get fast and flexible loans to grow your life or business.</p>
+                </div>
+                <div class="card pop-card">
+                    <h3>Savings</h3>
+                    <p>Secure your future with high-interest savings plans.</p>
+                </div>
+                <div class="card pop-card">
+                    <h3>Transfers</h3>
+                    <p>Send and receive money easily with our reliable systems.</p>
+                </div>
+            </div>
+
+            <div class="card-row">
+                <div class="card pop-card">
+                    <h3>Ordinary Savings</h3>
+                    <p>Simple, secure, and accessible savings for all.</p>
+                </div>
+                <div class="card pop-card">
+                    <h3>Junior Saving</h3>
+                    <p>Start saving for your children’s bright future today.</p>
+                </div>
+                <div class="card pop-card">
+                    <h3>Group Saving</h3>
+                    <p>Community savings made easier and more transparent.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
+                <button class="view-all-btn-small">View All Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS & SERVICES CARDS -->
+    <section class="products" aria-label="Loan and service products">
+        <h2>Our Products & Services</h2>
+        <div class="products-grid">
+            <!-- Loan Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="loan-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <path d="M12 52h40v4H12zM22 44h20v4H22zM32 36h8v4h-8z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+                <h3 id="loan-card-title">Loans</h3>
+                <p>Flexible loan options tailored to your needs with competitive interest rates.</p>
+                <a href="#" class="btn" role="button">Apply Now</a>
+            </article>
+
+            <!-- Savings Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="savings-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="3" fill="none"/>
+        <path d="M32 12v40M12 32h40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+                <h3 id="savings-card-title">Savings</h3>
+                <p>Secure and reliable savings plans designed to help you build your future.</p>
+                <a href="#" class="btn" role="button">Learn More</a>
+            </article>
+
+            <!-- Business Card -->
+            <article class="product-card" tabindex="0" role="region" aria-labelledby="business-card-title">
+                <svg class="product-icon" aria-hidden="true" focusable="false" viewBox="0 0 64 64">
+        <rect x="12" y="24" width="40" height="16" fill="none" stroke="currentColor" stroke-width="3" rx="4"/>
+        <path d="M20 24v-8h24v8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+                <h3 id="business-card-title">Business Solutions</h3>
+                <p>Customized financial services aimed at helping your business succeed.</p>
+                <a href="#" class="btn" role="button">Discover</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta" aria-label="Call to action to open account">
+        <h2>Open an Account with UGAFODE Today</h2>
+        <a href="#" class="btn">Get Started</a>
+    </section>
+
+
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest updates</p>
+        <form>
+            <input type="email" placeholder="Enter your email" />
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>VIRGIN Microfinance Ltd (MDI), Plot 62, Silva Arcade, Bombo Road, Kampala<br> Phone: (+256) 414 257 181 | Toll-Free: 0800 223 900</p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQs</a>
+            <a href="#">Feedback</a>
+        </div>
+        <p>© 2025 VIRGIN Microfinance Ltd (MDI). Regulated by Bank of Uganda.</p>
+    </footer>
+    <div class="chat-container">
+        <!-- Hidden checkbox controls toggle -->
+        <input type="checkbox" id="chat-toggle" aria-label="Toggle chat options" />
+        <!-- Label styled as chat button -->
+        <label for="chat-toggle" class="chat-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="chat-dropdown">
+    💬
+  </label>
+        <!-- Dropdown panel -->
+        <div class="chat-dropdown" id="chat-dropdown" role="menu" aria-label="Chat contact options">
+            <a href="https://wa.me/256700123456" target="_blank" rel="noopener noreferrer" role="menuitem" aria-label="Chat on WhatsApp" tabindex="-1">
+                <!-- WhatsApp SVG icon -->
+                <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20.52 3.48A11.908 11.908 0 0 0 3.47 20.5L2 22l1.52-1.47a11.913 11.913 0 0 0 17-17zM12 20a8 8 0 0 1-4.32-1.22l-.31-.19-3.1.82.83-3.02-.2-.31A8 8 0 1 1 12 20zm3.46-5.18c-.2-.1-1.18-.58-1.36-.64-.18-.06-.31-.1-.44.1s-.5.64-.61.78c-.11.15-.22.17-.42.06a7.1 7.1 0 0 1-2.09-1.29 7.95 7.95 0 0 1-1.48-1.83c-.15-.25 0-.39.11-.5.11-.11.24-.29.36-.43.12-.14.16-.25.24-.41a.5.5 0 0 0 0-.43c-.06-.14-.44-1.07-.6-1.46-.16-.38-.33-.33-.44-.34l-.38-.01a.6.6 0 0 0-.43.2c-.15.16-.6.59-.6 1.43s.62 1.66.7 1.78c.08.12 1.21 1.84 2.93 2.58a4.25 4.25 0 0 0 2.12.39 2.07 2.07 0 0 0 1.57-1.02c.13-.23.13-.43.09-.48-.04-.05-.18-.08-.38-.18z"/>
+      </svg>
+            </a>
+            <a href="sms:+256700123456" role="menuitem" aria-label="Send SMS" tabindex="-1">
+                <!-- SMS icon -->
+                <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 6h16l-8 5-8-5zm0 12V8l6.4 4 1.6 1 1.6-1 6.4-4v10H4z"/>
+      </svg>
+            </a>
+            <a href="tel:+256700123456" role="menuitem" aria-label="Call phone number" tabindex="-1">
+                <!-- Call icon -->
+                <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.39 11.39 0 0 0 3.58.57 1 1 0 0 1 1 1v3.54a1 1 0 0 1-1 1A17.91 17.91 0 0 1 3 5a1 1 0 0 1 1-1h3.54a1 1 0 0 1 1 1 11.39 11.39 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11z"/>
+      </svg>
+            </a>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
