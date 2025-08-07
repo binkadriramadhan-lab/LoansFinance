@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switch to FP Markets - Clone</title>
+    <style>
+         :root {
+            --primary: #d60000;
+            --white: #ffffff;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--white);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        /* Navbar */
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: bold;
+            user-select: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav>ul>li>a {
+            color: var(--white);
+            font-weight: 600;
+            padding: 10px 18px;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            user-select: none;
+        }
+        
+        nav>ul>li:hover>a,
+        nav>ul>li>a:focus {
+            background-color: #b00000;
+            color: var(--white);
+            outline: none;
+        }
+        /* Dropdown */
+        
+        nav ul li ul {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            display: none;
+            background: var(--white);
+            border: 1px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
+        }
+        
+        nav ul li:hover>ul,
+        nav ul li:focus-within>ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: var(--primary);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: var(--primary);
+            color: var(--white);
+            outline: none;
+        }
+        /* Dropdown arrow for parent links with submenu */
+        
+        nav ul>li>a::after {
+            content: " ";
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        /* Remove arrow on dropdown items */
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        /* Dropdown fade animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: url('image/bk6.jpg') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero .cta-button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            border: 2px solid var(--white);
+        }
+        
+        .hero .cta-button:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        /* Section */
+        
+        section {
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(214, 0, 0, 0.2);
+        }
+        
+        .card img {
+            width: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        /* How It Works */
+        /* How It Works */
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            counter-reset: step;
+        }
+        
+        .steps .step {
+            position: relative;
+            padding-left: 3rem;
+            text-align: left;
+            /* Added card styles */
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .steps .step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(214, 0, 0, 0.2);
+        }
+        
+        .steps .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bold;
+        }
+        /* CTA Final */
+        
+        .final-cta {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        
+        .final-cta a {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .final-cta a:hover {
+            background: #ffe0e0;
+        }
+        /* Footer */
+        
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 2rem;
+            text-align: center;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="navbar">
+        <div class="logo">VIRGIN FINANCE</div>
+        <nav>
+            <ul>
+                <li><a href="Virgin Finance ltd.html">Home</a></li>
+                <li><a href="about Us.html">About Us</a>
+                    <ul>
+                        <li><a href="How We Work.html">How We Work</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html">Products</a>
+                    <ul>
+                        <li><a href="loans.html">Loans</a></li>
+                        <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                        <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                        <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                        <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Switch to FP Markets Today</h1>
+        <p>Experience ultra-fast execution, lower spreads, and a world-class trading platform tailored to professionals.</p>
+        <a href="#" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Why Switch to FP Markets</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="image/Low Spreads.png" alt="Icon" />
+                <h3>Low Spreads</h3>
+                <p>Trade with industry-leading spreads starting from 0.0 pips.</p>
+            </div>
+            <div class="card">
+                <img src="image/Fast Execution.png" alt="Icon" />
+                <h3>Fast Execution</h3>
+                <p>Enjoy lightning-fast order execution with top-tier liquidity providers.</p>
+            </div>
+            <div class="card">
+                <img src="image/Trusted Broker.png" alt="Icon" />
+                <h3>Trusted Broker</h3>
+                <p>Trade with confidence through a globally regulated and trusted broker.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>Register Your Account</h3>
+                <p>Sign up in just a few minutes with our quick onboarding process.</p>
+            </div>
+            <div class="step">
+                <h3>Fund Your Wallet</h3>
+                <p>Deposit securely using a wide range of supported payment methods.</p>
+            </div>
+            <div class="step">
+                <h3>Start Trading</h3>
+                <p>Access powerful platforms and trade global markets instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <h2>Join Thousands of Traders Worldwide</h2>
+        <p>Experience why FP Markets is the preferred broker for thousands of traders globally.</p>
+        <a href="#">Open an Account</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Virgin Finance. All Rights Reserved.</p>
+        <p>Email: Virginfinance@gmail.com | Phone: +256789144751</p>
+    </footer>
+</body>
+
+</html>

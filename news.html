@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virgin Finance Tariff Guide</title>
+    <style>
+         :root {
+            --primary-color: #d60000;
+            --text-color: #000;
+            --bg-color: #fff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: #fff;
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0.8rem 1.5rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 18px;
+            display: block;
+            transition: 0.3s ease;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+        }
+        
+        nav ul li ul {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            display: none;
+            background: #fff;
+            border: 1px solid #d60000;
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
+        }
+        
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: #d60000;
+            background-color: #fff;
+            font-weight: 500;
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: #d60000;
+            color: #fff;
+        }
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero {
+            background-color: #f9f9f9;
+            padding: 5rem 2rem 2rem;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        .hero h1 {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        
+        thead {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tbody tr:hover {
+            background-color: #ffe6e6;
+        }
+        
+        a.download-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        a.download-btn:hover {
+            background-color: #a00000;
+        }
+        
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            margin: 1rem 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icons div {
+            width: 30px;
+            height: 30px;
+            background-color: #555;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            footer {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">VIRGIN FINANCE</div>
+            <nav>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="about Us.html">About Us ▾</a>
+                        <ul>
+                            <li><a href="How We Work.html">How We Work</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products ▾</a>
+                        <ul>
+                            <li><a href="loans.html">Loans</a></li>
+                            <li><a href="Rental Manangement.html">Rental Management</a></li>
+                            <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                            <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="lT.html">Financial Banks Equipment Supply</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Virgin Finance Tariff Guide</h1>
+        <p>Providing transparent pricing and value for our clients</p>
+    </section>
+
+    <main>
+        <section>
+            <h2>Savings Accounts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Charge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Account Opening</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Maintenance</td>
+                        <td>UGX 20,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Loans</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Charge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Loan Application Fee</td>
+                        <td>UGX 10,000</td>
+                    </tr>
+                    <tr>
+                        <td>Early Repayment Penalty</td>
+                        <td>2% of outstanding</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <a href="#" class="download-btn">Download Full Tariff Guide</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-section">
+            <p>Contact Us:</p>
+            <p>Plot 33, Luthuli Avenue, Bugolobi</p>
+            <p>Email: info@ugafode.co.ug</p>
+        </div>
+        <div class="footer-section">
+            <p>Follow Us:</p>
+            <div class="social-icons">
+                <div title="Facebook"></div>
+                <div title="Twitter"></div>
+                <div title="Instagram"></div>
+                <div title="LinkedIn"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UGAFODE Loan Products</title>
+    <title>Loan VIRGIN FINANCE </title>
     <style>
         /* === VARIABLES & BASE === */
         
@@ -64,110 +64,125 @@
             padding: 0 20px;
         }
         
-        nav {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
-            position: relative;
+            flex-wrap: wrap;
+            background-color: #d60000;
+            /* Navbar red background */
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
         }
         
         .logo {
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
+            font-size: 1.8rem;
+            color: #fff;
+            /* Make logo white to stand out on red background */
+            font-weight: bold;
             user-select: none;
         }
-        /* Nav menu */
         
-        .nav-links {
+        nav ul {
             list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
             margin: 0;
             padding: 0;
-            display: flex;
-            gap: 30px;
         }
         
-        .nav-links>li {
+        nav li {
             position: relative;
         }
         
-        .nav-links>li>a {
-            color: var(--white);
+        nav a {
+            color: #fff;
+            /* White text for navbar links */
             font-weight: 600;
-            padding: 10px 0;
-            display: inline-block;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links>li>a:hover,
-        .nav-links>li>a:focus {
-            color: #ffb3b3;
-            outline: none;
-        }
-        /* Dropdown */
-        
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--white);
-            color: var(--gray-dark);
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 6px 15px var(--shadow);
-            min-width: 190px;
-            display: none;
-            flex-direction: column;
-            padding: 10px 0;
+            padding: 10px 18px;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
             user-select: none;
         }
         
-        .dropdown a {
-            padding: 10px 25px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-        
-        .dropdown a:hover,
-        .dropdown a:focus {
-            background: var(--red);
-            color: var(--white);
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+            /* Slightly darker red on hover */
+            color: #fff;
             outline: none;
         }
-        /* Show dropdown on hover/focus */
         
-        .nav-links>li:hover>.dropdown,
-        .nav-links>li:focus-within>.dropdown {
-            display: flex;
-        }
-        /* === MOBILE MENU TOGGLE === */
-        
-        #nav-toggle {
+        nav ul li ul {
+            position: absolute;
+            top: 110%;
+            left: 0;
             display: none;
-        }
-        
-        .nav-toggle-label {
-            display: none;
-            cursor: pointer;
+            background: #fff;
+            /* Dropdown background white */
+            border: 1px solid #d60000;
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
             flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 23px;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
         }
         
-        .nav-toggle-label span {
-            display: block;
-            height: 3px;
-            background: var(--white);
-            border-radius: 3px;
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: #d60000;
+            /* Red text inside dropdown */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: #d60000;
+            color: #fff;
+            outline: none;
+        }
+        /* Dropdown arrow for parent links with submenu */
+        
+        nav ul>li>a::after {
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        /* Remove arrow on dropdown items */
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        /* Dropdown fade animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* === HERO SECTION === */
         
         .hero {
             margin-top: 60px;
             height: 420px;
-            background: linear-gradient(rgba(120, 120, 120, 0.65), rgba(110, 109, 109, 0.65)), url("image/background2.jpg") center/cover no-repeat;
+            background: url("image/bk8.png") center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -452,61 +467,134 @@
         }
         /* === FOOTER === */
         
-        footer {
-            background: var(--red);
-            color: var(--white);
-            padding: 45px 20px 30px;
+        .footer {
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding: 60px 20px;
         }
         
         .footer-container {
             max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
         }
         
-        .footer-col {
-            flex: 1 1 200px;
-            min-width: 180px;
+        .footer-col h2.logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .footer-col h4 {
-            margin-bottom: 18px;
-            font-weight: 700;
-            font-size: 1.3rem;
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
         }
         
         .footer-col p,
         .footer-col a {
+            color: #ccc;
             font-size: 0.95rem;
-            margin-bottom: 10px;
-            color: var(--white);
-            display: block;
+            line-height: 1.6;
+            text-decoration: none;
         }
         
-        .footer-col a:hover,
-        .footer-col a:focus {
-            text-decoration: underline;
-            outline: none;
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
         }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a:hover,
+        .footer-col a:hover {
+            color: crimson;
+            transition: 0.3s ease;
+        }
+        /* Underline Animation */
+        
+        .underline {
+            width: 60px;
+            height: 2px;
+            background: #fff;
+            position: relative;
+            margin-top: 4px;
+            overflow: hidden;
+        }
+        
+        .underline span {
+            width: 100%;
+            height: 100%;
+            background: crimson;
+            position: absolute;
+            left: -100%;
+            animation: slide 2s infinite;
+        }
+        
+        @keyframes slide {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 0%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        /* Newsletter form */
+        
+        .newsletter-input {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 10px;
+        }
+        
+        .newsletter-input input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            flex: 1;
+            padding-left: 10px;
+        }
+        
+        .newsletter-input button {
+            background: none;
+            border: none;
+            color: crimson;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .newsletter-input button:hover {
+            transform: translateX(5px);
+        }
+        /* Social icons */
         
         .social-icons {
-            display: flex;
-            gap: 20px;
-            font-size: 1.6rem;
+            margin-top: 20px;
         }
         
         .social-icons a {
-            color: var(--white);
-            transition: color 0.3s ease;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         
-        .social-icons a:hover,
-        .social-icons a:focus {
-            color: #ffb3b3;
-            outline: none;
+        .social-icons a:hover {
+            color: crimson;
+            transform: scale(1.2);
         }
         /* === RESPONSIVE === */
         
@@ -661,41 +749,32 @@
 
     <!-- ================= HEADER / NAVIGATION ================= -->
     <header>
-        <div class="container">
-            <nav aria-label="Primary Navigation">
-                <a href="#" class="logo" aria-label="UGAFODE Home">UGAFODE</a>
-
-                <!-- Mobile toggle checkbox -->
-                <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation menu" />
-                <label for="nav-toggle" class="nav-toggle-label" tabindex="0">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-                <ul class="nav-links" role="menubar">
-                    <li role="none"><a href="#" role="menuitem" tabindex="0">Home</a></li>
-                    <li role="none" tabindex="0" aria-haspopup="true" aria-expanded="false">
-                        <a href="#" role="menuitem" tabindex="0">About ▾</a>
-                        <ul class="dropdown" role="menu" aria-label="About submenu">
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">About UGAFODE</a></li>
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">Board of Directors</a></li>
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">Management</a></li>
+        <div class="navbar">
+            <div class="logo">VIRGIN FINANCE</div>
+            <nav>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="about Us.html">About Us ▾</a>
+                        <ul>
+                            <li><a href="How We Work.html">How We Work</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="Customer Reviews.html">Customer Reviews</a></li>
                         </ul>
                     </li>
-                    <li role="none" tabindex="0" aria-haspopup="true" aria-expanded="false">
-                        <a href="#" role="menuitem" tabindex="0">Products ▾</a>
-                        <ul class="dropdown" role="menu" aria-label="Products submenu">
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">Loan Products</a></li>
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">Savings Products</a></li>
-                            <li role="none"><a href="#" role="menuitem" tabindex="0">Other Services</a></li>
+                    <li><a href="products.html">Products ▾</a>
+                        <ul>
+                            <li><a href="loans.html">Loans</a></li>
+
+                            <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                            <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                            <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
-                    <li role="none"><a href="#" role="menuitem" tabindex="0" class="active">Careers</a></li>
-                    <li role="none"><a href="#" role="menuitem" tabindex="0">Get in Touch</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-        </div>
     </header>
 
     <!-- ================= HERO SECTION ================= -->
@@ -787,34 +866,65 @@
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer>
-        <div class="footer-container" role="contentinfo">
+
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Brand Section -->
             <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>UGAFODE Microfinance Limited</p>
-                <p>P.O Box 7155, Kampala, Uganda</p>
-                <p>Tel: +256 414 123456</p>
-                <p>Email: info@ugafode.co.ug</p>
+                <h2 class="logo"><i class="fa-solid fa-scissors"></i>tyle</h2>
+                <p>VIRGIN FINANCE was licensed by the Uganda Registration Services Bureau (URSB) on 17th October 2024 to operate as a financial institution, offering services like savings accounts and credit.</p>
             </div>
+
+            <!-- Office Info -->
             <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="#" tabindex="0">Home</a>
-                <a href="#" tabindex="0">About</a>
-                <a href="#" tabindex="0">Loan Products</a>
-                <a href="#" tabindex="0">Careers</a>
-                <a href="#" tabindex="0">Get in Touch</a>
+                <h3>Office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>Nateete Business Centre<br>Along Wakaliga, Kibuyi Road</p>
+                <p><a href="Virginfinance@gmail.com">Virginfinance@gmail.com</a></p>
+                <p><a href="tel:+256789144751">+256789144751</a></p>
             </div>
+
+            <!-- Links -->
             <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-icons" role="list" aria-label="Social Media Links">
-                    <a href="#" aria-label="Facebook" role="listitem" tabindex="0">📘</a>
-                    <a href="#" aria-label="Twitter" role="listitem" tabindex="0">🐦</a>
-                    <a href="#" aria-label="LinkedIn" role="listitem" tabindex="0">🔗</a>
-                    <a href="#" aria-label="Instagram" role="listitem" tabindex="0">📸</a>
+                <h3>Links
+                    <div class="underline"><span></span></div>
+                </h3>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about Us.html">About Us</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h3>Newsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form action="#">
+                    <div class="newsletter-input">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Enter your email id" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/256701234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
+
         </div>
     </footer>
+
+
+
 
 </body>
 

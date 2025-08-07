@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How We Work - Loan Process</title>
+    <style>
+        /* Root Colors */
+        
+         :root {
+            --deep-red: #d60000;
+            --white: #ffffff;
+            --dark-text: #222222;
+            --gray-text: #444444;
+            --overlay-opacity: 0.6;
+            --transition-speed: 0.3s;
+            --border-radius: 1rem;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        /* Global Styles */
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.5;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--deep-red);
+        }
+        
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--gray-text);
+        }
+        /* Utility */
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Fade-in and Slide-up Animation */
+        
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #d60000;
+            /* Navbar red background */
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: #fff;
+            /* Make logo white to stand out on red background */
+            font-weight: bold;
+            user-select: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav a {
+            color: #fff;
+            /* White text for navbar links */
+            font-weight: 600;
+            padding: 10px 18px;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            user-select: none;
+            text-decoration: none;
+        }
+        
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+            /* Slightly darker red on hover */
+            color: #fff;
+            outline: none;
+        }
+        
+        nav ul li ul {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            display: none;
+            background: #fff;
+            /* Dropdown background white */
+            border: 1px solid #d60000;
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
+        }
+        
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: #d60000;
+            /* Red text inside dropdown */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: #d60000;
+            color: #fff;
+            outline: none;
+        }
+        /* Dropdown arrow for parent links with submenu */
+        
+        nav ul>li>a::after {
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        /* Remove arrow on dropdown items */
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        /* Dropdown fade animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* =====================
+       1. HERO SECTION
+       ===================== */
+        
+        header.hero {
+            position: relative;
+            background: url('image/bk5.png') center center/cover no-repeat;
+            color: var(--white);
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+        
+        header.hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: var(--overlay-opacity);
+            z-index: 1;
+        }
+        
+        header.hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+        
+        header.hero h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 0.5rem;
+        }
+        
+        header.hero p {
+            font-size: 1.25rem;
+            color: #ffffff;
+            /* ✅ Set text color to white */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+        }
+        /* =====================
+       2. LOAN APPLICATION PROCESS
+       ===================== */
+        
+        .loan-process {
+            background-color: #fff;
+            padding: 3rem 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .loan-process .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem 2rem;
+        }
+        
+        .loan-process h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #d60000;
+            /* primary red */
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .loan-process .step {
+            background-color: #fafafa;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 12px rgba(214, 0, 0, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: default;
+        }
+        
+        .loan-process .step:hover,
+        .loan-process .step:focus {
+            box-shadow: 0 10px 20px rgba(214, 0, 0, 0.3);
+            transform: translateY(-6px);
+            outline: none;
+        }
+        
+        .loan-process .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #d60000;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            user-select: none;
+        }
+        
+        .loan-process .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: #b00000;
+        }
+        
+        .loan-process .step p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+        /* =====================
+       3. ELIGIBILITY CRITERIA
+       ===================== */
+        
+        section.eligibility {
+            background-color: var(--white);
+            padding: 3rem 1rem 4rem;
+        }
+        
+        section.eligibility .container {
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+        
+        section.eligibility h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        ul.eligibility-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul.eligibility-list li {
+            font-size: 1rem;
+            color: var(--dark-text);
+            padding-left: 2.5rem;
+            position: relative;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        /* Red checkmark using CSS */
+        
+        ul.eligibility-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--deep-red);
+            font-weight: 700;
+            font-size: 1.25rem;
+            line-height: 1;
+            user-select: none;
+        }
+        /* =====================
+       4. INTEREST RATES EXPLANATION
+       ===================== */
+        
+        section.interest-rates {
+            background-color: var(--white);
+            padding: 3rem 1rem 4rem;
+        }
+        
+        section.interest-rates .container {
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+        
+        section.interest-rates h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        /* Interest rates table */
+        
+        table.interest-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+            color: var(--dark-text);
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        table.interest-table thead {
+            background-color: var(--deep-red);
+            color: var(--white);
+        }
+        
+        table.interest-table th,
+        table.interest-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        
+        table.interest-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        /* Disclaimer text */
+        
+        .disclaimer {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* =====================
+       5. CALL TO ACTION
+       ===================== */
+        
+        section.cta {
+            background-color: var(--deep-red);
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+            animation: fadeSlideUp 1s ease forwards;
+        }
+        
+        section.cta button {
+            background-color: var(--white);
+            color: var(--deep-red);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
+            transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        section.cta button:hover,
+        section.cta button:focus {
+            background-color: #b30000;
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(179, 0, 0, 0.8);
+            transform: scale(1.05);
+            outline: none;
+        }
+        /* =====================
+       Responsive Design
+       ===================== */
+        
+        @media (max-width: 900px) {
+            section.loan-process .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            article.step {
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-width: 450px) {
+            header.hero h1 {
+                font-size: 2rem;
+            }
+            header.hero p {
+                font-size: 1rem;
+            }
+            section.loan-process .container,
+            section.eligibility .container,
+            section.interest-rates .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+
+
+    <header>
+        <div class="navbar">
+            <div class="logo">VIRGIN FINANCE</div>
+            <nav>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="about Us.html">About Us ▾</a>
+                        <ul>
+                            <li><a href="How We Work.html">How We Work</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products ▾</a>
+                        <ul>
+                            <li><a href="loans.html">Loans</a></li>
+
+                            <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                            <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                            <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <body>
+        <!-- 1. HERO SECTION -->
+        <header class="hero" role="banner" aria-label="Loan Application Process Hero Section">
+            <div class="hero-content">
+                <h1>How We Work</h1>
+                <p>Your trusted partner in loan applications — simple, transparent, and fast.</p>
+            </div>
+        </header>
+
+        <!-- 2. LOAN APPLICATION PROCESS -->
+        <section class="loan-process" aria-labelledby="loan-process-heading">
+            <div class="container">
+                <h2 id="loan-process-heading">Loan Application Process</h2>
+
+                <article class="step" tabindex="0">
+                    <div class="step-number" aria-hidden="true">1</div>
+                    <h3>Submit Application</h3>
+                    <p>Fill out our easy-to-use online application form with your details.</p>
+                </article>
+
+                <article class="step" tabindex="0">
+                    <div class="step-number" aria-hidden="true">2</div>
+                    <h3>Document Verification</h3>
+                    <p>Our team verifies your documents quickly and securely.</p>
+                </article>
+
+                <article class="step" tabindex="0">
+                    <div class="step-number" aria-hidden="true">3</div>
+                    <h3>Loan Approval</h3>
+                    <p>Get instant approval notification based on your eligibility.</p>
+                </article>
+
+                <article class="step" tabindex="0">
+                    <div class="step-number" aria-hidden="true">4</div>
+                    <h3>Disbursement</h3>
+                    <p>Funds are transferred directly to your account without delay.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. ELIGIBILITY CRITERIA -->
+        <section class="eligibility" aria-labelledby="eligibility-heading">
+            <div class="container">
+                <h2 id="eligibility-heading">Eligibility Criteria</h2>
+                <ul class="eligibility-list">
+                    <li>Must be 18 years or older</li>
+                    <li>Proof of stable income</li>
+                    <li>Valid government-issued ID</li>
+                    <li>Good credit history</li>
+                    <li>Resident in the country of application</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4. INTEREST RATES EXPLANATION -->
+        <section class="interest-rates" aria-labelledby="interest-rates-heading">
+            <div class="container">
+                <h2 id="interest-rates-heading">Interest Rates & Terms</h2>
+                <table class="interest-table" role="table" aria-describedby="interest-rates-note">
+                    <thead>
+                        <tr>
+                            <th scope="col">Loan Type</th>
+                            <th scope="col">Interest Rate (p.a.)</th>
+                            <th scope="col">Repayment Term</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Personal Loan</td>
+                            <td>10% - 15%</td>
+                            <td>12 - 36 months</td>
+                        </tr>
+                        <tr>
+                            <td>Home Loan</td>
+                            <td>7% - 12%</td>
+                            <td>60 - 240 months</td>
+                        </tr>
+                        <tr>
+                            <td>Auto Loan</td>
+                            <td>8% - 14%</td>
+                            <td>12 - 60 months</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="disclaimer" id="interest-rates-note">* Rates are subject to change based on creditworthiness and market conditions.</p>
+            </div>
+        </section>
+
+        <!-- 5. CALL TO ACTION -->
+        <section class="cta" aria-label="Call to Action - Apply Now">
+            <button type="button" aria-label="Apply for a loan now">Apply Now</button>
+        </section>
+    </body>
+
+</html>

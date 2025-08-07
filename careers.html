@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Careers at UGAFODE</title>
+    <title>Careers at VIRGIN FINANCE</title>
     <style>
         /* ===== Variables ===== */
         
@@ -49,104 +49,125 @@
         }
         /* ===== Navbar ===== */
         
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--red);
-            color: var(--white);
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
+        .navbar {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #d60000;
+            /* Navbar red background */
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: #fff;
+            /* Make logo white to stand out on red background */
             font-weight: bold;
+            user-select: none;
         }
         
-        .nav-links {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
         }
         
-        .nav-links li {
+        nav li {
             position: relative;
         }
         
-        .nav-links a {
-            color: var(--white);
-            font-weight: 500;
-            padding: 0.4rem;
-            display: inline-block;
-            transition: opacity .3s;
-        }
-        
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-        /* Dropdown CSS only */
-        
-        .nav-links li:hover>ul.dropdown {
+        nav a {
+            color: #fff;
+            /* White text for navbar links */
+            font-weight: 600;
+            padding: 10px 18px;
             display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            user-select: none;
+            text-decoration: none;
         }
         
-        ul.dropdown {
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+            /* Slightly darker red on hover */
+            color: #fff;
+            outline: none;
+        }
+        
+        nav ul li ul {
             position: absolute;
-            top: 100%;
+            top: 110%;
             left: 0;
-            background: var(--white);
-            color: var(--dark);
-            list-style: none;
             display: none;
-            min-width: 160px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            /* Dropdown background white */
+            border: 1px solid #d60000;
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
         }
         
-        ul.dropdown li a {
-            color: var(--dark);
-            padding: 0.5rem;
-            display: block;
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
         }
         
-        ul.dropdown li a:hover {
-            background: var(--gray-light);
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: #d60000;
+            /* Red text inside dropdown */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
         }
-        /* Mobile nav stack */
         
-        @media (max-width:768px) {
-            .nav-links {
-                flex-direction: column;
-                background: var(--red);
-                width: 100%;
-                display: none;
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: #d60000;
+            color: #fff;
+            outline: none;
+        }
+        /* Dropdown arrow for parent links with submenu */
+        
+        nav ul>li>a::after {
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        /* Remove arrow on dropdown items */
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        /* Dropdown fade animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
             }
-            .nav-links.show {
-                display: flex;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .nav-toggle {
-                display: inline-block;
-                cursor: pointer;
-            }
-        }
-        
-        .nav-toggle {
-            display: none;
         }
         /* ===== Hero Section ===== */
         
         .hero {
             margin-top: 60px;
-            background-image: url('https://via.placeholder.com/1600x500');
+            background-image: url('image/bk3.png');
             background-size: cover;
             background-position: center;
             height: 350px;
@@ -380,29 +401,36 @@
 <body>
 
     <!-- NAVIGATION BAR -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">UGAFODE</div>
-            <div class="nav-toggle">☰</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li>
-                    <a href="#">About</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Mission</a></li>
-                        <li><a href="#">Values</a></li>
+    <div class="navbar">
+        <div class="logo">VIRGIN FINANCE</div>
+        <nav>
+            <ul>
+                <li><a href="Virgin Finance ltd.html">Home</a></li>
+                <li><a href="about Us.html">About Us</a>
+                    <ul>
+                        <li><a href="How We Work.html">How We Work</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="Customer Reviews.html">Customer Reviews</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="products.html">Products</a>
+                    <ul>
+                        <li><a href="loans.html">Loans</a></li>
+                        <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                        <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                        <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                        <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Careers at UGAFODE</h1>
+        <h1>Careers at VIRGIN FINANCE </h1>
         <p>Join our team and be part of our mission to drive financial inclusion.</p>
     </section>
 
@@ -437,7 +465,7 @@
     <section class="culture">
         <div class="culture-container container">
             <div class="culture-text">
-                <h2>Why Join UGAFODE?</h2>
+                <h2>Why Join VIRGIN FINANCE ?</h2>
                 <p>We offer an inclusive work environment, growth opportunities, and the chance to make a real impact in communities across Uganda.</p>
             </div>
             <div class="culture-image"><img src="image/Virgin Finance.jpg" alt="Team working"></div>
@@ -449,9 +477,9 @@
         <div class="footer-container">
             <div>
                 <h3>Contact Info</h3>
-                <p>P.O. Box 12345, Kampala, Uganda</p>
-                <p>Email: info@ugafode.co.ug</p>
-                <p>Phone: +256 414 123456</p>
+                <p>P.O. Box 27522 Kampala Uganda</p>
+                <p>Email: Virginfinance@gmail.com</p>
+                <p>Phone: : +256777347950, +256759324704, +256789144751</p>
             </div>
             <div>
                 <h3>Quick Links</h3>

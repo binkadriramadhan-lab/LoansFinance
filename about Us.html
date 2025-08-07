@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UGAFODE - About Us</title>
+    <title>VIRGIN FINANCE- About Us</title>
     <style>
         /* Base Styling */
         
@@ -33,55 +33,124 @@
         }
         /* Navigation Bar */
         
-        nav {
-            background-color: var(--white);
-            border-bottom: 1px solid #ccc;
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            flex-wrap: wrap;
+            background-color: #d60000;
+            /* Navbar red background */
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
         }
         
-        nav .logo {
-            font-size: 1.5rem;
+        .logo {
+            font-size: 1.8rem;
+            color: #fff;
+            /* Make logo white to stand out on red background */
             font-weight: bold;
-            color: var(--red);
+            user-select: none;
         }
         
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
         }
         
         nav li {
             position: relative;
         }
         
-        nav li:hover>ul {
+        nav a {
+            color: #fff;
+            /* White text for navbar links */
+            font-weight: 600;
+            padding: 10px 18px;
             display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            user-select: none;
+            text-decoration: none;
         }
         
-        nav ul ul {
-            display: none;
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+            /* Slightly darker red on hover */
+            color: #fff;
+            outline: none;
+        }
+        
+        nav ul li ul {
             position: absolute;
-            top: 100%;
+            top: 110%;
             left: 0;
-            background: var(--white);
-            border: 1px solid #ccc;
+            display: none;
+            background: #fff;
+            /* Dropdown background white */
+            border: 1px solid #d60000;
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
         }
         
-        nav ul ul li {
-            padding: 0.5rem 1rem;
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
             white-space: nowrap;
+            color: #d60000;
+            /* Red text inside dropdown */
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: #d60000;
+            color: #fff;
+            outline: none;
+        }
+        /* Dropdown arrow for parent links with submenu */
+        
+        nav ul>li>a::after {
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        /* Remove arrow on dropdown items */
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        /* Dropdown fade animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Hero Banner */
         
         .hero {
-            background: url('image/Group Loan.jpg') center center / cover no-repeat;
+            background: url('image/bk2.png') center center / cover no-repeat;
             color: #ffffff;
             /* fallback if var(--white) is undefined */
             height: 400px;
@@ -129,16 +198,51 @@
         /* Section */
         
         section {
-            padding: 3rem 2rem;
-            max-width: 1100px;
+            padding: 40px;
+            max-width: 900px;
             margin: auto;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--red);
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: #d60000;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .info-block img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .text span {
+            font-weight: bold;
+            color: #d60000;
+        }
+        
+        @media (min-width: 768px) {
+            .info-block {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .text {
+                max-width: 50%;
+            }
         }
         
         .cards {
@@ -182,56 +286,157 @@
             flex: 1;
         }
         /* Footer */
+        /* ===== FOOTER STYLING ===== */
         
-        footer {
-            background: #222;
-            color: var(--white);
-            padding: 2rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .footer {
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            padding: 60px 20px;
+        }
+        
+        .footer-container {
             max-width: 1200px;
             margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
         
-        .footer-col {
-            flex: 1 1 200px;
+        .footer-col h2.logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .footer-col h4 {
-            margin-bottom: 1rem;
-            color: var(--red);
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .footer-col p,
+        .footer-col a {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-decoration: none;
         }
         
         .footer-col ul {
             list-style: none;
+            padding: 0;
         }
         
         .footer-col ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
         }
         
-        .footer-col ul li a {
-            color: #ccc;
+        .footer-col ul li a:hover,
+        .footer-col a:hover {
+            color: crimson;
+            transition: 0.3s ease;
+        }
+        /* Underline Animation */
+        
+        .underline {
+            width: 60px;
+            height: 2px;
+            background: #fff;
+            position: relative;
+            margin-top: 4px;
+            overflow: hidden;
         }
         
-        .footer-col ul li a:hover {
-            color: var(--white);
+        .underline span {
+            width: 100%;
+            height: 100%;
+            background: crimson;
+            position: absolute;
+            left: -100%;
+            animation: slide 2s infinite;
         }
-        /* ===== Animations ===== */
         
-        @keyframes fadeInUp {
+        @keyframes slide {
             0% {
-                opacity: 0;
-                transform: translateY(30px);
+                left: -100%;
+            }
+            50% {
+                left: 0%;
             }
             100% {
-                opacity: 1;
-                transform: translateY(0);
+                left: 100%;
+            }
+        }
+        /* Newsletter form */
+        
+        .newsletter-input {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 10px;
+        }
+        
+        .newsletter-input input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            flex: 1;
+            padding-left: 10px;
+        }
+        
+        .newsletter-input button {
+            background: none;
+            border: none;
+            color: crimson;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .newsletter-input button:hover {
+            transform: translateX(5px);
+        }
+        /* Social icons */
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            margin-right: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: crimson;
+            transform: scale(1.2);
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .social-icons {
+                justify-content: center;
             }
         }
         /* ===== Media Queries ===== */
@@ -253,34 +458,51 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
-        <div class="logo">UGAFODE</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li>
-                <a href="#">About Us</a>
-                <ul>
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Vision & Mission</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="navbar">
+        <div class="logo">VIRGIN FINANCE</div>
+        <nav>
+            <ul>
+                <li><a href="Virgin Finance ltd.html">Home</a></li>
+                <li><a href="about Us.html">About Us ▾</a>
+                    <ul>
+                        <li><a href="How We Work.html">How We Work</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html">Products ▾</a>
+                    <ul>
+                        <li><a href="loans.html">Loans</a></li>
 
+                        <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                        <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                        <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                        <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
     <!-- Hero Banner -->
     <div class="hero">
         <h1>About Us</h1>
     </div>
 
     <!-- Our Story Section -->
+
     <section>
         <h2 class="section-title">Our Story</h2>
         <div class="info-block">
             <img src="image/Virgin Finance.jpg" alt="Our Story">
             <div class="text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis tellus in dolor tincidunt, ut scelerisque nisi sollicitudin. Vivamus eget nisi id neque eleifend bibendum.</p>
+                <p>
+                    <span>Virgin Finance</span> was licensed by <span>URSB</span> on <span>17th October 2024</span> to offer services like
+                    <span>savings</span> and <span>credit</span>. With over <span>100 clients</span>, it serves many through a
+                    <span>one-on-one remote approach</span>.<br><br> Its focus is solving <span>financial issues</span> in <span>business</span> and <span>housing</span> using
+                    <span>value chain financing</span>, promoting <span>economic growth</span>.
+                </p>
             </div>
         </div>
     </section>
@@ -305,27 +527,60 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
+
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Brand Section -->
             <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>123 UGAFODE Avenue<br>Kampala, Uganda<br>Email: info@ugafode.co.ug</p>
+                <h2 class="logo"><i class="fa-solid fa-scissors"></i>tyle</h2>
+                <p>VIRGIN FINANCE was licensed by the Uganda Registration Services Bureau (URSB) on 17th October 2024 to operate as a financial institution, offering services like savings accounts and credit.</p>
             </div>
+
+            <!-- Office Info -->
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h3>Office
+                    <div class="underline"><span></span></div>
+                </h3>
+                <p>Nateete Business Centre<br>Along Wakaliga, Kibuyi Road</p>
+                <p><a href="Virginfinance@gmail.com">Virginfinance@gmail.com</a></p>
+                <p><a href="tel:+256789144751">+256789144751</a></p>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col">
+                <h3>Links
+                    <div class="underline"><span></span></div>
+                </h3>
                 <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about Us.html">About Us</a></li>
+                    <li><a href="contact.html">Contacts</a></li>
                 </ul>
             </div>
+
+            <!-- Newsletter -->
             <div class="footer-col">
-                <h4>Follow Us</h4>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                </ul>
+                <h3>Newsletter
+                    <div class="underline"><span></span></div>
+                </h3>
+                <form action="#">
+                    <div class="newsletter-input">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Enter your email id" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/256701234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
             </div>
+
         </div>
     </footer>
 

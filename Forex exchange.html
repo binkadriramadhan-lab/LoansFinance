@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency PairsVirgin Finance</title>
+    <style>
+         :root {
+            --red: #d60000;
+            --white: #ffffff;
+            --black: #000000;
+            --gray: #f5f5f5;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--red);
+            color: var(--white);
+            z-index: 9999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: var(--red);
+            padding: 0.8rem 1.5rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: bold;
+            user-select: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav li {
+            position: relative;
+        }
+        
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 18px;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 6px;
+            user-select: none;
+            text-decoration: none;
+        }
+        
+        nav li:hover>a,
+        nav a:focus {
+            background-color: #b00000;
+            color: #fff;
+            outline: none;
+        }
+        
+        nav ul li ul {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            display: none;
+            background: #fff;
+            border: 1px solid var(--red);
+            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
+            flex-direction: column;
+            min-width: 200px;
+            border-radius: 6px;
+            padding: 8px 0;
+            z-index: 9999;
+        }
+        
+        nav ul li:hover ul,
+        nav ul li:focus-within ul {
+            display: flex;
+            animation: dropdownFade 0.25s ease forwards;
+        }
+        
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+            color: var(--red);
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-radius: 0;
+            margin-left: 6px;
+            user-select: none
+        }
+        
+        nav ul li ul li a:hover,
+        nav ul li ul li a:focus {
+            background-color: var(--red);
+            color: #fff;
+            outline: none;
+        }
+        
+        nav ul>li>a::after {
+            font-size: 0.7em;
+            margin-left: 6px;
+            user-select: none;
+        }
+        
+        nav ul li ul li a::after {
+            content: "";
+        }
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero {
+            background-image: url('image/bk1.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+        }
+        
+        .cards-section {
+            padding: 60px 20px;
+            background-color: var(--gray);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .card h3 {
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        
+        footer {
+            background-color: var(--red);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-icons {
+            margin-top: 15px;
+        }
+        
+        .footer-icons i {
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">VIRGIN FINANCE</div>
+            <nav>
+                <ul>
+                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="about Us.html">About Us ▾</a>
+                        <ul>
+                            <li><a href="How We Work.html">How We Work</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products ▾</a>
+                        <ul>
+                            <li><a href="loans.html">Loans</a></li>
+                            <li><a href="Rental Manangement.html">Rental Management</a></li>
+                            <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                            <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="lT.html">Financial Bank Equipment Supply</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Trade Major & Minor Currency Pairs</h1>
+            <p>Access the world’s most traded forex pairs with tight spreads and fast execution.</p>
+        </div>
+    </section>
+
+    <!-- PRODUCT CARDS -->
+    <section class="cards-section">
+        <div class="cards-grid">
+            <div class="card">
+                <img src="image/eru.png" alt="Flag">
+                <h3>EUR/USD</h3>
+                <p>Euro vs US Dollar - the most liquid and widely traded currency pair in the world.</p>
+            </div>
+            <div class="card">
+                <img src="image/USDjPY.png" alt="Flag">
+                <h3>GBP/USD</h3>
+                <p>Pound Sterling vs US Dollar - known for high volatility and tight spreads.</p>
+            </div>
+            <div class="card">
+                <img src="image/ussdfrp.png" alt="Flag">
+                <h3>USD/JPY</h3>
+                <p>US Dollar vs Japanese Yen - a major pair offering consistent trading volume.</p>
+            </div>
+            <div class="card">
+                <img src="image/ussd.gif" alt="Flag">
+                <h3>AUD/USD</h3>
+                <p>Australian Dollar vs US Dollar - driven by commodity prices and risk appetite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Contact us: +256777347950, +256789144751 |Email: Virginfinance@gmail.com</p>
+        <div class="footer-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-x-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
+    </footer>
+
+</body>
+
+</html>
