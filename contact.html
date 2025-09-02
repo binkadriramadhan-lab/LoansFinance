@@ -7,67 +7,74 @@
     <title>Contact Us VIRGIN FINANCE </title>
     <style>
         /*=============== Base Reset ===============*/
+        /* Reset and base styles */
         
-        *,
-        *::before,
-        *::after {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
         }
         
         body {
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
             background: #fff;
+            color: #333;
         }
         
         a {
             text-decoration: none;
             color: inherit;
         }
-        /*=============== Color Palette ===============*/
+        /* Top Bar */
         
-         :root {
-            --red: #d60000;
-            --white: #ffffff;
-            --light-gray: #f7f7f7;
-            --dark: #222;
+        .top-bar {
+            background: #d60000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            text-align: center;
         }
-        /*=============== Navigation Bar ===============*/
+        /* Header */
         
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            border-bottom: 1px solid #ddd;
-            z-index: 1000;
+            background: #fff;
+            border-bottom: 3px solid #d60000;
+            padding: 15px 5%;
         }
+        /* Navbar */
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            background-color: #d60000;
-            /* Navbar red background */
-            padding: 0.8rem 1.5rem;
-            box-shadow: 0 2px 8px rgba(214, 0, 0, 0.5);
         }
         
         .logo {
-            font-size: 1.8rem;
-            color: #fff;
-            /* Make logo white to stand out on red background */
+            display: flex;
+            flex-direction: column;
+            /* put text below image */
+            align-items: flex-start;
+            /* keep logo aligned to left */
+            font-size: 1.5rem;
             font-weight: bold;
-            user-select: none;
+            color: #d60000;
+        }
+        
+        .logo img {
+            height: 66px;
+            /* adjust size */
+            width: auto;
+            margin-bottom: 4px;
+            /* space between image and text */
+        }
+        
+        .logo span {
+            font-size: 12px;
+            /* adjust text size */
+            display: inline-block;
+            text-align: center;
         }
         
         nav ul {
@@ -75,8 +82,6 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            margin: 0;
-            padding: 0;
         }
         
         nav li {
@@ -84,86 +89,37 @@
         }
         
         nav a {
-            color: #fff;
-            /* White text for navbar links */
-            font-weight: 600;
-            padding: 10px 18px;
+            color: #d60000;
+            font-weight: bold;
+            padding: 10px 15px;
             display: block;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border-radius: 6px;
-            user-select: none;
-            text-decoration: none;
+            transition: all 0.3s ease;
         }
         
-        nav li:hover>a,
-        nav a:focus {
-            background-color: #b00000;
-            /* Slightly darker red on hover */
+        nav li:hover>a {
+            background: #d60000;
             color: #fff;
-            outline: none;
+            border-radius: 5px;
         }
         
         nav ul li ul {
             position: absolute;
-            top: 110%;
+            top: 100%;
             left: 0;
             display: none;
-            background: #fff;
-            /* Dropdown background white */
+            background: white;
             border: 1px solid #d60000;
-            box-shadow: 0 4px 12px rgba(214, 0, 0, 0.3);
             flex-direction: column;
-            min-width: 200px;
-            border-radius: 6px;
-            padding: 8px 0;
-            z-index: 9999;
+            z-index: 10;
         }
         
-        nav ul li:hover ul,
-        nav ul li:focus-within ul {
+        nav ul li:hover ul {
             display: flex;
-            animation: dropdownFade 0.25s ease forwards;
         }
         
         nav ul li ul li a {
-            padding: 10px 20px;
+            padding: 10px 15px;
             white-space: nowrap;
-            color: #d60000;
-            /* Red text inside dropdown */
-            font-weight: 500;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            border-radius: 0;
-        }
-        
-        nav ul li ul li a:hover,
-        nav ul li ul li a:focus {
-            background-color: #d60000;
-            color: #fff;
-            outline: none;
-        }
-        /* Dropdown arrow for parent links with submenu */
-        
-        nav ul>li>a::after {
-            font-size: 0.7em;
-            margin-left: 6px;
-            user-select: none;
-        }
-        /* Remove arrow on dropdown items */
-        
-        nav ul li ul li a::after {
-            content: "";
-        }
-        /* Dropdown fade animation */
-        
-        @keyframes dropdownFade {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         /*=============== Hero Section ===============*/
         
@@ -531,7 +487,13 @@
     <!-- Navigation -->
     <header>
         <div class="navbar">
-            <div class="logo">VIRGIN FINANCE</div>
+            <!-- Logo -->
+            <div class="logo">
+                <img src="image/LogOG.png" alt="Virgin Finance Logo">
+                <span>VIRGIN FINANCE</span>
+            </div>
+
+            <!-- Navigation -->
             <nav>
                 <ul>
                     <li><a href="Virgin Finance ltd.html">Home</a></li>
@@ -545,10 +507,10 @@
                     <li><a href="products.html">Products ▾</a>
                         <ul>
                             <li><a href="loans.html">Loans</a></li>
-
-                            <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                            <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="Forex exchange.html">events.html</a></li>
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>

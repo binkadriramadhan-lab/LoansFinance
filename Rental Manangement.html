@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rent Management System Clone</title>
     <style>
-        /* Global Styles */
+        /* Reset and base styles */
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #fff;
             color: #333;
         }
         
@@ -19,28 +25,21 @@
             text-decoration: none;
             color: inherit;
         }
+        /* Top Bar */
         
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        h1,
-        h2,
-        h3 {
-            color: #d60000;
+        .top-bar {
+            background: #d60000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            text-align: center;
         }
         /* Header */
         
         header {
-            background-color: #d60000;
-            color: #ffffff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            background: #fff;
+            border-bottom: 3px solid #d60000;
+            padding: 15px 5%;
         }
         /* Navbar */
         
@@ -49,13 +48,32 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            background-color: #d60000;
         }
         
         .logo {
-            font-size: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            /* put text below image */
+            align-items: flex-start;
+            /* keep logo aligned to left */
+            font-size: 1.5rem;
             font-weight: bold;
-            color: #ffffff;
+            color: #d60000;
+        }
+        
+        .logo img {
+            height: 66px;
+            /* adjust size */
+            width: auto;
+            margin-bottom: 4px;
+            /* space between image and text */
+        }
+        
+        .logo span {
+            font-size: 12px;
+            /* adjust text size */
+            display: inline-block;
+            text-align: center;
         }
         
         nav ul {
@@ -70,7 +88,7 @@
         }
         
         nav a {
-            color: #ffffff;
+            color: #d60000;
             font-weight: bold;
             padding: 10px 15px;
             display: block;
@@ -78,8 +96,8 @@
         }
         
         nav li:hover>a {
-            background: #ffffff;
-            color: #d60000;
+            background: #d60000;
+            color: #fff;
             border-radius: 5px;
         }
         
@@ -101,11 +119,6 @@
         nav ul li ul li a {
             padding: 10px 15px;
             white-space: nowrap;
-            color: #d60000;
-        }
-        
-        nav ul li ul li a:hover {
-            background-color: #ffe0e0;
         }
         /* Hero Section */
         
@@ -243,9 +256,14 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">VIRGIN FINANCE</div>
         <div class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="image/LogOG.png" alt="Virgin Finance Logo">
+                <span>VIRGIN FINANCE</span>
+            </div>
 
+            <!-- Navigation -->
             <nav>
                 <ul>
                     <li><a href="Virgin Finance ltd.html">Home</a></li>
@@ -259,9 +277,10 @@
                     <li><a href="products.html">Products ▾</a>
                         <ul>
                             <li><a href="loans.html">Loans</a></li>
-                            <li><a href="Rental Manangement.html">Rental Manangement</a></li>
+                            <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                            <li><a href="Forex exchange.html">events.html</a></li>
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
