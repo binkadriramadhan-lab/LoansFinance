@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgin Finance Splash</title>
+    <link rel="icon" href="image/LLog.png" type="image/png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Splash Screen Full View */
+        
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: hidden;
+            transition: opacity 1s ease;
+            background: #fff;
+        }
+        /* Geometric Minimalist Background using SVG */
+        
+        #splash::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="grad" gradientTransform="rotate(45)"><stop offset="0%" stop-color="%23007BFF"/><stop offset="100%" stop-color="%23FF0000"/></linearGradient></defs><rect width="400" height="400" rx="40" ry="40" fill="url(%23grad)"/><path d="M0,0 C200,200 200,200 400,400" fill="none" stroke="white" stroke-width="15"/></svg>') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        #splash.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        /* Logo Animation */
+        
+        #splash img {
+            width: 280px;
+            margin-bottom: 40px;
+            animation: logoFade 1.5s ease forwards;
+        }
+        
+        @keyframes logoFade {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Typing Text */
+        
+        .typing-text {
+            font-size: 2.5rem;
+            color: #f5eeee;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            /* make text bold */
+            border-right: 2px solid #000;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(22, end) forwards, blink 0.7s step-end infinite alternate;
+            text-align: center;
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 22ch;
+            }
+        }
+        
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+        /* Credit Text */
+        
+        .credit {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #333;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+            opacity: 0.8;
+        }
+        /* Main Content */
+        
+        #main-content {
+            display: none;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        #main-content.show {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash">
+        <img src="image/LLog.png" alt="Company Logo">
+        <div class="typing-text">Virgin Finance Limited</div>
+        <div class="credit">Created by Bin Kadri</div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="main-content">
+        <h1>Welcome to Virgin Finance</h1>
+        <p>This is your main index page content.</p>
+    </div>
+    <script>
+        // Check if splash has already been shown this session
+        if (!sessionStorage.getItem('splashShown')) {
+            sessionStorage.setItem('splashShown', 'true');
+            setTimeout(() => {
+                const splash = document.getElementById('splash');
+                splash.classList.add('hidden');
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+            }, 4000);
+        } else {
+            // Directly go to index if splash already shown
+            window.location.href = "index.html";
+        }
+    </script>
+
+
+
+</body>
+
+</html>

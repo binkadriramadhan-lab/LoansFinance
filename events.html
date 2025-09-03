@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event & Wedding Investments Uganda</title>
+    <link rel="icon" href="image/LLog.png" type="image/png">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset */
@@ -125,7 +127,7 @@
         .hero {
             text-align: center;
             padding: 100px 20px;
-            background: url('https://images.unsplash.com/photo-1529634898162-1d8f1c9e6dff?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            background: url('image/p3.png') center/cover no-repeat;
             color: white;
             position: relative;
         }
@@ -137,23 +139,42 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(214, 0, 0, 0.6);
             z-index: 1;
+            background: rgba(0, 0, 0, 0.3);
+            /* slight overlay for text clarity */
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
         }
+        /* Animate heading */
         
         .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(-40px);
+            animation: fadeSlideDown 1.2s ease forwards;
         }
+        /* Animate paragraph */
         
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeSlideUp 1.5s ease forwards;
+            animation-delay: 0.6s;
+            /* delay after h1 */
+        }
+        /* Button animation */
+        
+        .hero-content .btn {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1.2s;
+            /* after text */
         }
         
         .btn {
@@ -170,67 +191,212 @@
             color: #fff;
             box-shadow: 0 0 10px #fff;
         }
-        /* Sections */
+        /* Headings in sections */
         
-        section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        
-        section h2 {
+        h2 {
+            color: #d60000;
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #e63946;
+            margin-bottom: 30px;
+        }
+        /* Animations */
+        
+        @keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .about-text {
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.6;
-        }
-        /* Cards */
-        
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
+        @keyframes fadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .card {
-            background: white;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        /* About Section */
+        
+        .about {
+            padding: 50px 5%;
+            background: #f8f4f0;
+        }
+        
+        .about p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* Services Section */
+        
+        .services {
+            padding: 50px 5%;
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .service-card {
+            background: #fff;
+            padding: 25px 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            padding: 20px;
-            width: 300px;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: rotateCard 5s linear infinite;
         }
         
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
+        @keyframes rotateCard {
+            0% {
+                transform: rotate(-2deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+            100% {
+                transform: rotate(-2deg);
+            }
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: #f80101;
+            ;
             margin-bottom: 15px;
         }
         
-        .card h3 {
-            color: #e63946;
+        .service-card h3 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
         }
         
-        .card:hover {
-            transform: translateY(-8px);
+        .service-card p {
+            font-size: 0.95rem;
         }
-        /* Contact */
+        /* Projects/Gallery Section */
         
-        .contact-info {
+        .projects {
+            padding: 50px 5%;
+            background: #f8f4f0;
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .project-gallery img {
+            width: 100%;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .project-gallery img:hover {
+            transform: scale(1.05);
+        }
+        /* Testimonials Section */
+        
+        .testimonials {
+            padding: 50px 5%;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .testimonial-card {
+            background: #fff;
+            padding: 25px 20px;
+            border-radius: 12px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: floatCard 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+        
+        .testimonial-card h3 {
+            color: #f80101;
+            ;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-card p {
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        
+        .stars {
+            color: #FFD700;
+            margin-bottom: 10px;
             font-size: 1.1rem;
+        }
+        /* CTA Section */
+        
+        .cta {
+            padding: 50px 5%;
+            text-align: center;
+            background: #f80101;
+            ;
+        }
+        
+        .cta button {
+            background: #fff;
+            color: #f80101;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
         }
         /* Footer */
         
@@ -266,7 +432,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about Us.html">About Us ▾</a>
                         <ul>
                             <li><a href="How We Work.html">How We Work</a></li>
@@ -280,7 +446,7 @@
                             <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
-                            <li><a href="events.html">Events</a></li>
+                            <li><a href="Events.html">Events</a></li>
                             <li><a href="lT.html">Financial Equipment Supply</a></li>
                         </ul>
                     </li>
@@ -301,32 +467,75 @@
     </section>
 
     <!-- About Section -->
-    <section class="about">
-        <img src="https://images.unsplash.com/photo-1529634898162-1d8f1c9e6dff?auto=format&fit=crop&w=800&q=80" alt="Ugandan Wedding">
-        <div class="about-text">
-            <h2>About Us</h2>
-            <p>We are a Ugandan-based investment company committed to creating unforgettable moments...</p>
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Weddings</h3>
+                <p>One of the largest and most lucrative events.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-building"></i>
+                <h3>Graduations & School Events</h3>
+                <p>High demand for graduations, proms, and school award ceremonies.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Entertainment Nights</h3>
+                <p>Examples: costume parties, music festivals, dance nights.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Sports Events</h3>
+                <p>Local tournaments, marathons, or community sports days.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Investments Section -->
-    <section>
-        <h2>Our Investments</h2>
-        <div class="cards">
-            <!-- cards same as before -->
+    <!-- Projects/Gallery Section -->
+    <section class="projects">
+        <h2>Our Projects</h2>
+        <div class="project-gallery">
+            <img src="image/graduation.png" alt="Project 1">
+            <img src="image/concert.png" alt="Project 2">
+            <img src="image/wedding.png" alt="Project 3">
+            <img src="image/p6.png" alt="Project 4">
+            <img src="image/p5.png" alt="Project 5">
+            <img src="image/prg2.png" alt="Project 6">
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p class="contact-info">📧 binkadriramadhan@gmail.com | 📞 +256777347950<br>+256759324704<br>+256789144751</p>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>Client Testimonials</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <img src="image/c1.png" alt="Client 1">
+                <div class="stars">★★★★★</div>
+                <h3>Jane Mwangi</h3>
+                <p>Thanks to this team, our wedding was absolutely magical and stress-free.</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="image/c2.png" alt="Client 2">
+                <div class="stars">★★★★★</div>
+                <h3>David Okello</h3>
+                <p>Their attention to detail made our anniversary celebration unforgettable.</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="image/c4.png" alt="Client 3">
+                <div class="stars">★★★★★</div>
+                <h3>Mary Nakitto</h3>
+                <p>Highly professional and creative team. Every event felt unique and perfect.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Event & Wedding Investments Uganda. All Rights Reserved.</p>
-    </footer>
-</body>
+    <!-- CTA Section -->
+    <section class="cta">
+        <button>Invest in Your Celebration Today</button>
+    </section>
+
 
 </html>

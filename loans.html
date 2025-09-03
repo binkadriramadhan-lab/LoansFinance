@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Loan VIRGIN FINANCE </title>
+    <link rel="icon" href="image/LLog.png" type="image/png">
+
     <style>
         /* Reset and base styles */
         
@@ -130,29 +132,42 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: var(--white);
+            color: #ffffff;
+            /* Force white text */
             text-align: center;
             padding: 0 20px;
-            animation: heroFadeSlide 1.3s ease forwards;
         }
+        /* Heading animation */
         
         .hero h1 {
             font-size: 3.4rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transform: translateY(-40px);
+            animation: heroFadeSlide 1.2s ease forwards;
         }
+        /* Paragraph animation (slight delay) */
         
         .hero p {
             font-size: 1.3rem;
             max-width: 650px;
             text-shadow: 0 1px 7px rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            /* Force white text */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroFadeSlide 1.4s ease forwards;
+            animation-delay: 0.4s;
+            /* Delay so it comes after h1 */
         }
+        /* Keyframes */
         
         @keyframes heroFadeSlide {
             0% {
                 opacity: 0;
-                transform: translateY(-40px);
+                transform: translateY(40px);
             }
             100% {
                 opacity: 1;
@@ -168,12 +183,30 @@
             background: var(--gray-light);
         }
         
+        section.products {
+            padding: 70px 20px 90px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--gray-light);
+        }
+        /* Main section header */
+        
         section.products h2 {
             font-weight: 700;
             font-size: 2.6rem;
-            color: var(--red);
+            color: red;
+            /* 🔴 Force red header */
             margin-bottom: 50px;
             text-align: center;
+        }
+        /* Card headers */
+        
+        .card h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: red;
+            /* 🔴 Force red header */
         }
         
         .card-grid {
@@ -193,10 +226,12 @@
             text-align: center;
             opacity: 0;
             transform: translateY(40px);
-            animation: cardFadeUp 0.7s forwards;
+            animation: cardFadeUp 0.7s forwards, rotateCard 6s linear infinite;
+            /* ✅ Add self-rotating */
             transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
-        /* Staggered delays for animation */
+        /* Staggered entrance delays */
         
         article.card:nth-child(1) {
             animation-delay: 0.12s;
@@ -229,6 +264,16 @@
             transform: translateY(-6px) scale(1.04);
             outline: none;
         }
+        /* Glow + pause when clicked */
+        
+        article.card:active {
+            animation-play-state: paused;
+            /* ⏸ Pause rotation */
+            box-shadow: 0 0 25px rgba(214, 0, 0, 0.9);
+            /* 🔴 Glow red */
+            transform: scale(0.98) rotate(0deg);
+            /* Slight press effect */
+        }
         /* Card Image/Icon */
         
         .card img {
@@ -238,13 +283,6 @@
             object-fit: contain;
         }
         /* Card Heading */
-        
-        .card h3 {
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-            color: var(--red);
-        }
         /* Card Description */
         
         .card p {
@@ -252,7 +290,6 @@
             color: #444;
             margin-bottom: 22px;
             min-height: 72px;
-            /* Keep consistent height for text blocks */
         }
         /* Read More Button */
         
@@ -275,12 +312,25 @@
             transform: scale(1.1);
             outline: none;
         }
-        /* Entrance animation keyframes */
+        /* Entrance animation */
         
         @keyframes cardFadeUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        /* Self-rotating animation */
+        
+        @keyframes rotateCard {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(3deg);
+            }
+            100% {
+                transform: rotate(-3deg);
             }
         }
         /* === UPDATED DETAILED LOAN INFO BLOCKS (Loan Requirements Cards) === */
@@ -364,48 +414,51 @@
         }
         /* === UPDATED CTA CONTACT SECTION === */
         
-        section.cta-contact {
-            position: relative;
-            background: linear-gradient( rgba(214, 0, 0, 0.85), rgba(214, 0, 0, 0.85)), url("https://via.placeholder.com/1600x320?text=Apply+Now+Background") center/cover no-repeat;
-            color: var(--white);
+        section.cta {
+            max-width: 900px;
+            margin: 4rem auto 6rem;
+            padding: 3rem 2rem;
             text-align: center;
-            padding: 70px 20px;
+            background-color: #d60000;
+            /* Deep red */
+            color: #fdfdfd;
+            /* Pearl white text */
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(214, 0, 0, 0.35);
         }
+        /* CTA Heading */
         
-        section.cta-contact h2 {
-            font-size: 2.8rem;
+        section.cta h2 {
+            font-size: 2.7rem;
+            margin-bottom: 1.2rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            /* Ensure heading is white */
         }
+        /* CTA Button */
         
-        section.cta-contact p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        }
-        
-        section.cta-contact a.button {
-            background: var(--white);
-            color: var(--red);
-            padding: 15px 50px;
+        section.cta a.btn {
+            background-color: #ffffff;
+            /* White button */
+            color: #d60000;
+            /* Red text */
+            padding: 1rem 3rem;
             font-weight: 700;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            border-radius: 30px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
             box-shadow: 0 6px 18px rgba(255, 255, 255, 0.8);
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+        /* CTA Button Hover */
         
-        section.cta-contact a.button:hover,
-        section.cta-contact a.button:focus {
-            background: #f4f4f4;
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 1);
-            transform: scale(1.07);
+        section.cta a.btn:hover,
+        section.cta a.btn:focus {
+            background-color: #fff4f4;
+            color: #a30000;
+            box-shadow: 0 8px 22px rgba(255, 255, 255, 0.3);
             outline: none;
         }
         /* === FOOTER === */
@@ -702,7 +755,7 @@
             <!-- Navigation -->
             <nav>
                 <ul>
-                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about Us.html">About Us ▾</a>
                         <ul>
                             <li><a href="How We Work.html">How We Work</a></li>
@@ -716,7 +769,7 @@
                             <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
-                            <li><a href="Forex exchange.html">events.html</a></li>
+                            <li><a href="Events.html">Events</a></li>
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
@@ -808,13 +861,18 @@
         </article>
     </section>
 
-    <!-- ================= CONTACT CTA SECTION ================= -->
+    <!-- ================= CONTACT CTA SECTION 
     <section class="cta-contact" aria-label="Contact Call to Action">
         <h2>Ready to apply for a loan?</h2>
         <p>Contact us today or visit one of our branches for personalized assistance.</p>
-        <a href="#" class="button" aria-label="Contact UGAFODE">Get in Touch</a>
+        <a href="#" class="button" aria-label="Contact UGAFODE">Get in Touch</a>================= -->
     </section>
-
+    <!-- CALL TO ACTION -->
+    <section class="cta" aria-label="Call to action to open account">
+        <h2>Ready to apply for a loan?</h2>
+        <p>Contact us today or visit one of our branches for personalized assistance.</p>
+        <a href="contact.html" class="btn">Get in Touch</a>
+    </section>
     <!-- ================= FOOTER ================= -->
 
 
@@ -833,8 +891,8 @@
                     <div class="underline"><span></span></div>
                 </h3>
                 <p>Nateete Business Centre<br>Along Wakaliga, Kibuyi Road</p>
-                <p><a href="Virginfinance@gmail.com">Virginfinance@gmail.com</a></p>
-                <p><a href="tel:+256789144751">+256789144751</a></p>
+                <p><a href="Virginfinance@gmail.com">virginfinance17@gmail.com</a></p>
+                <p><a href="tel:+256789144751">+256777347950<br> +256759324704<br>  +256789144751</a></p>
             </div>
 
             <!-- Links -->

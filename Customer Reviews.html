@@ -2,47 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Testimonials - Customer Reviews</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virgin Finance - Customer Reviews</title>
+    <link rel="icon" href="image/LLog.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Root colors */
-        /* Reset and base styles */
+        /* Reset & Base */
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             background: #fff;
             color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         a {
             text-decoration: none;
             color: inherit;
         }
-        /* Top Bar */
-        
-        .top-bar {
-            background: #d60000;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            text-align: center;
-        }
         /* Header */
         
         header {
-            background: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 3px solid #d60000;
-            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1000;
         }
-        /* Navbar */
         
         .navbar {
             display: flex;
@@ -68,6 +69,15 @@
             width: auto;
             margin-bottom: 4px;
             /* space between image and text */
+            @keyframes logoSlide {
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(-8px);
+                }
+            }
         }
         
         .logo span {
@@ -121,305 +131,326 @@
             padding: 10px 15px;
             white-space: nowrap;
         }
-        /* === 1. HEADER SECTION === */
+        /* Hero Section */
         
-        header.testimonials-header {
-            background: linear-gradient(rgba(214, 0, 0, 0.85), rgba(214, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            color: var(--white);
+        .hero {
+            background-image: url('image/bk1.png');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px;
             text-align: center;
-            padding: 4rem 1rem 5rem;
+            color: #fff;
+            position: relative;
         }
         
-        header.testimonials-header h1 {
-            font-size: 3.25rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            animation: fadeSlideUp 1s ease forwards;
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
         }
         
-        header.testimonials-header p {
-            font-size: 1.25rem;
-            color: var(--light-gray);
-            margin-top: 0;
-            animation: fadeSlideUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
-        /* === 2. TESTIMONIAL CARDS === */
-        
-        section.testimonials {
-            max-width: 1100px;
-            margin: -3rem auto 3rem;
-            padding: 0 1rem 4rem;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeSlideUp 1s ease forwards;
-            opacity: 0;
-            animation-fill-mode: forwards;
-            animation-delay: 0.8s;
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            z-index: 2;
         }
         
-        article.testimonial-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 16px var(--shadow);
-            flex: 1 1 280px;
-            max-width: 320px;
-            padding: 2rem 2rem 2.5rem;
-            text-align: center;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-            cursor: default;
-        }
-        
-        article.testimonial-card:hover,
-        article.testimonial-card:focus-within {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(214, 0, 0, 0.45);
-            outline: none;
-        }
-        
-        figure.customer-photo {
-            margin: 0 auto 1.25rem;
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 0 4px var(--deep-red);
-        }
-        
-        figure.customer-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        figcaption.customer-name {
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--deep-red);
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-        }
-        
-        p.testimonial-text {
-            color: var(--dark-text);
-            font-size: 1rem;
-            font-style: italic;
-            line-height: 1.4;
-            min-height: 80px;
-            margin-bottom: 1rem;
-        }
-        /* Star rating */
-        
-        .stars {
-            color: var(--deep-red);
-            font-size: 1.1rem;
-            user-select: none;
-        }
-        /* === 3. SUCCESS STORIES SECTION === */
-        
-        section.success-stories {
-            background-color: var(--white);
-            max-width: 1100px;
-            margin: 0 auto 3rem;
-            padding: 2rem 1rem 4rem;
-            text-align: center;
-        }
-        
-        section.success-stories h2 {
-            color: var(--deep-red);
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            animation: fadeSlideUp 1s ease forwards;
             opacity: 0;
-            animation-delay: 1.2s;
-            animation-fill-mode: forwards;
+            animation: fadeSlide 1s ease forwards;
         }
         
-        div.success-cards {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            animation: fadeSlideUp 1s ease forwards;
+        .hero p {
+            font-size: 1.2rem;
             opacity: 0;
-            animation-delay: 1.5s;
-            animation-fill-mode: forwards;
+            animation: fadeSlide 1s ease 0.5s forwards;
         }
         
-        article.success-card {
-            background: #fff;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 14px var(--shadow);
-            padding: 2rem 1.5rem;
-            flex: 1 1 300px;
-            max-width: 320px;
-            text-align: left;
-            cursor: default;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-        }
-        
-        article.success-card:hover,
-        article.success-card:focus-within {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(214, 0, 0, 0.35);
-            outline: none;
-        }
-        
-        .success-icon {
-            color: var(--deep-red);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            user-select: none;
-        }
-        
-        article.success-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--deep-red);
-        }
-        
-        article.success-card p {
-            color: var(--dark-text);
-            font-size: 1rem;
-            line-height: 1.4;
-        }
-        /* === 4. CALL TO ACTION === */
-        
-        section.cta {
-            background-color: var(--deep-red);
-            padding: 3rem 1rem;
-            text-align: center;
-            margin-top: 1rem;
-        }
-        
-        section.cta button {
-            background-color: var(--white);
-            color: var(--deep-red);
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.3rem;
-            font-weight: 700;
-            padding: 1rem 3rem;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(255, 255, 255, 0.4);
-            transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
-        }
-        
-        section.cta button:hover,
-        section.cta button:focus {
-            background-color: #b30000;
-            color: var(--white);
-            box-shadow: 0 8px 28px rgba(179, 0, 0, 0.8);
-            transform: scale(1.05);
-            outline: none;
-        }
-        /* === Animations === */
-        
-        @keyframes fadeSlideUp {
+        @keyframes fadeSlide {
             0% {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        /* Responsive */
+        /* Section Titles */
         
-        @media (max-width: 900px) {
-            section.testimonials,
-            div.success-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            article.testimonial-card,
-            article.success-card {
-                max-width: 90%;
+        h2.section-title {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            color: #d60000;
+            font-size: 2rem;
+        }
+        
+        p.section-subtitle {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #28a745;
+            font-size: 1.1rem;
+        }
+        /* Review Cards */
+        
+        .review-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding: 0 5% 50px;
+        }
+        
+        .review-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeSlide 1s ease forwards;
+            position: relative;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(214, 0, 0, 0.5);
+        }
+        
+        .review-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+        
+        .review-card h3 {
+            margin-bottom: 10px;
+            color: #f90404;
+            font-size: 1.2rem;
+        }
+        
+        .review-card p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        
+        .review-card .stars {
+            color: #FFD700;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        /* Animation delays for 9 cards */
+        
+        .review-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .review-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .review-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .review-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .review-card:nth-child(5) {
+            animation-delay: 1s;
+        }
+        
+        .review-card:nth-child(6) {
+            animation-delay: 1.2s;
+        }
+        
+        .review-card:nth-child(7) {
+            animation-delay: 1.4s;
+        }
+        
+        .review-card:nth-child(8) {
+            animation-delay: 1.6s;
+        }
+        
+        .review-card:nth-child(9) {
+            animation-delay: 1.8s;
+        }
+        /* CTA */
+        
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .cta button {
+            background: #d60000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cta button:hover {
+            background: #ff3333;
+        }
+        /* Footer */
+        
+        footer {
+            background: #d60000;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-icons {
+            margin-top: 15px;
+        }
+        
+        .footer-icons i {
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        @media(max-width:900px) {
+            .review-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        @media (max-width: 450px) {
-            header.testimonials-header h1 {
+        @media(max-width:600px) {
+            .review-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
                 font-size: 2rem;
             }
-            header.testimonials-header p {
-                font-size: 1rem;
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     </style>
+</head>
 
+<body>
+
+    <!-- Header -->
     <header>
-        <div class="navbar">
-            <!-- Logo -->
-            <div class="logo">
-                <img src="image/LogOG.png" alt="Virgin Finance Logo">
-                <span>VIRGIN FINANCE</span>
-            </div>
-
-            <!-- Navigation -->
-            <nav>
-                <ul>
-                    <li><a href="Virgin Finance ltd.html">Home</a></li>
-                    <li><a href="about Us.html">About Us ▾</a>
-                        <ul>
-                            <li><a href="How We Work.html">How We Work</a></li>
-                            <li><a href="careers.html">Careers</a></li>
-                            <li><a href="Customer Reviews.html">Customer Reviews</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="products.html">Products ▾</a>
-                        <ul>
-                            <li><a href="loans.html">Loans</a></li>
-                            <li><a href="Rental Manangement.html">Rental Management</a></li>
-                            <li><a href="Investment Analysis.html">Investment Analysis</a></li>
-                            <li><a href="Forex exchange.html">Forex Exchange</a></li>
-                            <li><a href="Forex exchange.html">events.html</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+            <img src="image/LogOG.png" alt="Virgin Finance Logo">
+            <span>VIRGIN FINANCE</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about Us.html">About Us ▾</a>
+                    <ul>
+                        <li><a href="How We Work.html">How We Work</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="Customer Reviews.html">Customer Reviews</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html">Products ▾</a>
+                    <ul>
+                        <li><a href="loans.html">Loans</a></li>
+                        <li><a href="Rental Manangement.html">Rental Management</a></li>
+                        <li><a href="Investment Analysis.html">Investment Analysis</a></li>
+                        <li><a href="Forex exchange.html">Forex Exchange</a></li>
+                        <li><a href="Events.html">Events</a></li>
+                        <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                    </ul>
+                </li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hear From Our Happy Customers</h1>
+            <p>Real stories from people whose lives have been transformed by Virgin Finance.</p>
+        </div>
+    </section>
 
-        <!-- 3. SUCCESS STORIES -->
-        <section class="success-stories" aria-label="Success Stories">
-            <h2>Success Stories</h2>
-            <div class="success-cards">
-                <article class="success-card" tabindex="0">
-                    <div class="success-icon" aria-hidden="true">🏆</div>
-                    <h3>Empowered Small Businesses</h3>
-                    <p>Over 500 entrepreneurs received loans to kickstart or expand their ventures.</p>
-                </article>
+    <!-- Reviews Section -->
+    <h2 class="section-title">Customer Reviews</h2>
+    <p class="section-subtitle">Trusted by thousands of satisfied clients</p>
+    <section class="review-container">
+        <div class="review-card">
+            <img src="image/c1.png" alt="Customer 1">
+            <h3>Jane Mwangi</h3>
+            <div class="stars">★★★★★</div>
+            <p>Virgin Finance helped me secure a loan to start my small business. Truly life-changing!</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c2.png" alt="Customer 2">
+            <h3>David Okello</h3>
+            <div class="stars">★★★★★</div>
+            <p>Fast, easy, and professional service. I can finally manage my finances efficiently.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c4.png" alt="Customer 3">
+            <h3>Mary Nakitto</h3>
+            <div class="stars">★★★★★</div>
+            <p>The financial advice I received was practical and helped me save for my children's education.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c3.png" alt="Customer 4">
+            <h3>James Kato</h3>
+            <div class="stars">★★★★★</div>
+            <p>Excellent support for small business owners. I recommend Virgin Finance to everyone.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c5.png" tar5.p alt="Customer 5">
+            <h3>Grace Achieng</h3>
+            <div class="stars">★★★★★</div>
+            <p>The team is friendly and understanding. They helped me navigate through my first loan.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c6.png" alt="Customer 6">
+            <h3>Pauline Namutebi</h3>
+            <div class="stars">★★★★★</div>
+            <p>Transparent and fast service. Virgin Finance truly empowers the community.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c7.png" alt="Customer 7">
+            <h3>Robert Ssenyonjo</h3>
+            <div class="stars">★★★★★</div>
+            <p>My experience was seamless. I appreciate their guidance and professionalism.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c8.png" alt="Customer 8">
+            <h3>Esther Nalule</h3>
+            <div class="stars">★★★★★</div>
+            <p>Affordable loans with excellent support. I was able to start my dream project easily.</p>
+        </div>
+        <div class="review-card">
+            <img src="image/c9.png" alt="Customer 9">
+            <h3>Michael Ochieng</h3>
+            <div class="stars">★★★★★</div>
+            <p>Highly recommended! Virgin Finance goes beyond expectations to help clients succeed.</p>
+        </div>
+    </section>
 
-                <article class="success-card" tabindex="0">
-                    <div class="success-icon" aria-hidden="true">📈</div>
-                    <h3>Consistent Growth</h3>
-                    <p>Clients experienced an average revenue increase of 30% within the first year.</p>
-                </article>
+    <!-- CTA -->
+    <div class="cta">
+        <button>Apply for a Loan Now</button>
+    </div>
 
-                <article class="success-card" tabindex="0">
-                    <div class="success-icon" aria-hidden="true">👍</div>
-                    <h3>Customer Satisfaction</h3>
-                    <p>Rated 4.8/5 for transparency and support in recent customer surveys.</p>
-                </article>
-            </div>
-        </section>
 
-        <!-- 4. CALL TO ACTION -->
-        <section class="cta" aria-label="Call to Action">
-            <button type="button" aria-label="Join our happy customers and get started today">
-      Join Our Happy Customers
-    </button>
-        </section>
-    </body>
+
+</body>
 
 </html>

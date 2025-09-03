@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Currency PairsVirgin Finance</title>
+    <title>Currency Pairs | Virgin Finance</title>
+    <link rel="icon" href="image/LLog.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* Reset and base styles */
         
@@ -12,13 +15,16 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
             background: #fff;
             color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         a {
@@ -36,13 +42,6 @@
         }
         /* Header */
         
-        header {
-            background: #fff;
-            border-bottom: 3px solid #d60000;
-            padding: 15px 5%;
-        }
-        /* Navbar */
-        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -53,12 +52,12 @@
         .logo {
             display: flex;
             flex-direction: column;
-            /* put text below image */
             align-items: flex-start;
-            /* keep logo aligned to left */
             font-size: 1.5rem;
             font-weight: bold;
             color: #d60000;
+            animation: slideLeft 2s ease-in-out infinite;
+            /* infinite left-right loop */
         }
         
         .logo img {
@@ -120,6 +119,19 @@
             padding: 10px 15px;
             white-space: nowrap;
         }
+        /* Fade-in + slide animation */
+        
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Hero Section */
         
         .hero {
             background-image: url('image/bk1.png');
@@ -127,9 +139,8 @@
             background-position: center;
             padding: 100px 20px;
             text-align: center;
-            color: var(--white);
+            color: #fff;
             position: relative;
-            margin-top: 80px;
         }
         
         .hero::after {
@@ -149,59 +160,127 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease forwards;
         }
         
         .hero p {
             font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 0.5s forwards;
+            /* delay so paragraph appears after title */
+        }
+        /* Section Title */
+        
+        h2.section-title {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            color: #d60000;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 0.2s forwards;
         }
         
-        .cards-section {
-            padding: 60px 20px;
-            background-color: var(--gray);
+        p.section-subtitle {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #28a745;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 0.4s forwards;
         }
+        /* Main Cards */
         
-        .cards-grid {
+        main {
+            flex: 1;
+            padding: 2rem 1rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: auto;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
         
         .card {
-            background-color: var(--white);
+            background-color: #ffffff;
+            border: 1px solid #ddd;
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: shake 2s infinite;
+            position: relative;
+        }
+        /* Hover / Glow */
+        
+        .card:hover,
+        .card:focus {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6);
         }
         
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .card:hover::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.5);
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        /* Shake Animation */
+        
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translate(-2px, 0);
+            }
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translate(2px, 0);
+            }
         }
         
-        .card img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            margin-bottom: 10px;
+        .pair-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #007BFF;
         }
         
-        .card h3 {
-            color: var(--red);
-            margin-bottom: 10px;
+        .rate {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
         
-        .card p {
-            font-size: 0.95rem;
-            color: #333;
+        .change {
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
+        
+        .change.positive {
+            color: #28a745;
+        }
+        
+        .change.negative {
+            color: #dc3545;
+        }
+        /* Footer */
         
         footer {
-            background-color: var(--red);
-            color: var(--white);
+            background-color: #d60000;
+            color: #fff;
             padding: 40px 20px;
             text-align: center;
         }
@@ -214,8 +293,9 @@
             margin: 0 10px;
             font-size: 1.5rem;
         }
+        /* Responsive */
         
-        @media (max-width: 600px) {
+        @media(max-width: 600px) {
             .hero h1 {
                 font-size: 2rem;
             }
@@ -225,7 +305,6 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
@@ -242,7 +321,7 @@
             <!-- Navigation -->
             <nav>
                 <ul>
-                    <li><a href="Virgin Finance ltd.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about Us.html">About Us ▾</a>
                         <ul>
                             <li><a href="How We Work.html">How We Work</a></li>
@@ -256,7 +335,7 @@
                             <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
-                            <li><a href="Forex exchange.html">events.html</a></li>
+                            <li><a href="Events.html">Events</a></li>
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
@@ -275,35 +354,66 @@
         </div>
     </section>
 
-    <!-- PRODUCT CARDS -->
-    <section class="cards-section">
-        <div class="cards-grid">
-            <div class="card">
-                <img src="image/eru.png" alt="Flag">
-                <h3>EUR/USD</h3>
-                <p>Euro vs US Dollar - the most liquid and widely traded currency pair in the world.</p>
-            </div>
-            <div class="card">
-                <img src="image/USDjPY.png" alt="Flag">
-                <h3>GBP/USD</h3>
-                <p>Pound Sterling vs US Dollar - known for high volatility and tight spreads.</p>
-            </div>
-            <div class="card">
-                <img src="image/ussdfrp.png" alt="Flag">
-                <h3>USD/JPY</h3>
-                <p>US Dollar vs Japanese Yen - a major pair offering consistent trading volume.</p>
-            </div>
-            <div class="card">
-                <img src="image/ussd.gif" alt="Flag">
-                <h3>AUD/USD</h3>
-                <p>Australian Dollar vs US Dollar - driven by commodity prices and risk appetite.</p>
-            </div>
+    <!-- CURRENCY PAIRS SECTION -->
+    <h2 class="section-title">Currency Pairs</h2>
+    <p class="section-subtitle">Track exchange rates of major currencies</p>
+
+    <main>
+        <div class="card">
+            <div class="pair-name">💵 USD / 💶 EUR</div>
+            <div class="rate">0.93</div>
+            <div class="change positive">↑ 0.01</div>
         </div>
-    </section>
+        <div class="card">
+            <div class="pair-name">💷 GBP / 💵 USD</div>
+            <div class="rate">1.24</div>
+            <div class="change negative">↓ 0.02</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💵 USD / 💴 JPY</div>
+            <div class="rate">142.15</div>
+            <div class="change positive">↑ 0.10</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💶 EUR / 💷 GBP</div>
+            <div class="rate">0.85</div>
+            <div class="change positive">↑ 0.01</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">🇦🇺 AUD / 💵 USD</div>
+            <div class="rate">0.67</div>
+            <div class="change negative">↓ 0.01</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💵 USD / 🇨🇦 CAD</div>
+            <div class="rate">1.34</div>
+            <div class="change positive">↑ 0.02</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">🇳🇿 NZD / 💵 USD</div>
+            <div class="rate">0.62</div>
+            <div class="change negative">↓ 0.01</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💶 EUR / 💴 JPY</div>
+            <div class="rate">132.20</div>
+            <div class="change positive">↑ 0.15</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💷 GBP / 💴 JPY</div>
+            <div class="rate">175.50</div>
+            <div class="change negative">↓ 0.20</div>
+        </div>
+        <div class="card">
+            <div class="pair-name">💵 USD / 💶 CHF</div>
+            <div class="rate">0.91</div>
+            <div class="change positive">↑ 0.01</div>
+        </div>
+    </main>
 
     <!-- FOOTER -->
     <footer>
-        <p>Contact us: +256777347950, +256789144751 |Email: Virginfinance@gmail.com</p>
+        <p>Contact us: +256777347950, +256789144751 | Email: virginfinance17@gmail.com</p>
         <div class="footer-icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-x-twitter"></i>
