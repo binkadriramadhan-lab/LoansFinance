@@ -23,6 +23,10 @@
             color: #333;
         }
         
+        h2 {
+            color: #d60000;
+        }
+        
         a {
             text-decoration: none;
             color: inherit;
@@ -44,54 +48,27 @@
             padding: 15px 5%;
         }
         /* Navbar */
+        /* Navbar container */
         
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            /* center all links horizontally */
             align-items: center;
-            flex-wrap: wrap;
+            gap: 30px;
+            /* space between links */
+            background: #fff;
+            padding: 10px 0;
         }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            /* put text below image */
-            align-items: flex-start;
-            /* keep logo aligned to left */
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d60000;
-        }
-        
-        .logo img {
-            height: 66px;
-            /* adjust size */
-            width: auto;
-            margin-bottom: 4px;
-            /* space between image and text */
-            @keyframes logoSlide {
-                0%,
-                100% {
-                    transform: translateX(0);
-                }
-                50% {
-                    transform: translateX(-8px);
-                }
-            }
-        }
-        
-        .logo span {
-            font-size: 12px;
-            /* adjust text size */
-            display: inline-block;
-            text-align: center;
-        }
+        /* Links */
         
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 30px;
+            /* horizontal spacing */
+            margin: 0;
+            padding: 0;
         }
         
         nav li {
@@ -100,9 +77,11 @@
         
         nav a {
             color: #d60000;
+            /* red text */
             font-weight: bold;
-            padding: 10px 15px;
-            display: block;
+            font-size: 16px;
+            padding: 5px 10px;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
         
@@ -111,25 +90,54 @@
             color: #fff;
             border-radius: 5px;
         }
+        /* Dropdown menu */
         
         nav ul li ul {
             position: absolute;
             top: 100%;
             left: 0;
             display: none;
+            flex-direction: column;
             background: white;
             border: 1px solid #d60000;
-            flex-direction: column;
-            z-index: 10;
+            min-width: 150px;
+            z-index: 999;
         }
         
-        nav ul li:hover ul {
+        nav ul li:hover>ul {
             display: flex;
         }
         
         nav ul li ul li a {
-            padding: 10px 15px;
-            white-space: nowrap;
+            color: #d60000;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        
+        nav ul li ul li a:hover {
+            background: #d60000;
+            color: #fff;
+        }
+        /* Keep it horizontal on mobile */
+        
+        @media (max-width: 768px) {
+            .navbar,
+            nav ul {
+                justify-content: center;
+                flex-wrap: nowrap;
+                gap: 15px;
+            }
+            nav a {
+                font-size: 14px;
+                padding: 5px 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 12px;
+                padding: 4px 6px;
+            }
         }
         /* Hero Section */
         
@@ -177,13 +185,13 @@
             background: #fff;
             border-radius: 1rem;
             padding: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .card:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(214, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
         }
         
         .card img {

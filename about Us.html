@@ -46,54 +46,74 @@
         }
         /* Navbar */
         
+        header {
+            background: #fff;
+            border-bottom: 3px solid #d60000;
+            padding: 15px 5%;
+        }
+        /* Navbar */
+        /* Navbar */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
+            /* logo left, nav right */
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            /* always in one line */
+            width: 100%;
+            /* full width */
+            max-width: 1200px;
+            /* optional max width */
+            margin: 0 auto;
+            /* center navbar in the screen */
+            padding: 5px clamp(8px, 2vw, 15px);
         }
+        /* Logo */
         
         .logo {
             display: flex;
             flex-direction: column;
-            /* put text below image */
             align-items: flex-start;
-            /* keep logo aligned to left */
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 2vw, 1.5rem);
             font-weight: bold;
             color: #d60000;
         }
         
         .logo img {
-            height: 66px;
-            /* adjust size */
+            height: clamp(35px, 6vw, 66px);
             width: auto;
             margin-bottom: 4px;
-            /* space between image and text */
         }
         
         .logo span {
-            font-size: 12px;
-            /* adjust text size */
+            font-size: clamp(10px, 1.5vw, 12px);
             display: inline-block;
             text-align: center;
         }
+        /* Main Menu */
         
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+            /* keep in row */
+            gap: clamp(6px, 2vw, 20px);
+            flex-wrap: nowrap;
+            /* never wrap */
+            margin: 0;
+            padding: 0;
         }
         
         nav li {
             position: relative;
+            white-space: nowrap;
         }
         
         nav a {
             color: #d60000;
             font-weight: bold;
-            padding: 10px 15px;
+            font-size: clamp(12px, 1.5vw, 16px);
+            padding: clamp(5px, 1vw, 10px) clamp(6px, 1.5vw, 15px);
             display: block;
             transition: all 0.3s ease;
         }
@@ -103,6 +123,7 @@
             color: #fff;
             border-radius: 5px;
         }
+        /* Dropdown */
         
         nav ul li ul {
             position: absolute;
@@ -112,16 +133,67 @@
             background: white;
             border: 1px solid #d60000;
             flex-direction: column;
-            z-index: 10;
+            /* vertical dropdown */
+            z-index: 999;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
-        nav ul li:hover ul {
+        nav ul li:hover>ul {
             display: flex;
         }
         
         nav ul li ul li a {
-            padding: 10px 15px;
-            white-space: nowrap;
+            padding: 8px 12px;
+            font-size: clamp(12px, 1.4vw, 14px);
+            color: #d60000;
+        }
+        
+        nav ul li ul li a:hover {
+            background: #d60000;
+            color: #fff;
+        }
+        /* Dropdown animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive */
+        /* Responsive adjustments without breaking the row layout */
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: row;
+                /* keep menu horizontal */
+                flex-wrap: nowrap;
+                /* prevent wrapping */
+                justify-content: flex-end;
+                /* align menu to the right */
+                gap: clamp(4px, 1vw, 10px);
+                /* reduce spacing */
+            }
+            nav a {
+                font-size: clamp(12px, 1.2vw, 14px);
+                padding: 5px 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 4px;
+                /* very small spacing to fit */
+            }
+            nav a {
+                font-size: 11px;
+                padding: 4px 6px;
+            }
         }
         /* Hero Banner */
         
@@ -460,7 +532,7 @@
                             <li><a href="Rental Manangement.html">Rental Management</a></li>
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
-                            <li><a href="Events.html">Events.</a></li>
+                            <li><a href="Events.html">Events</a></li>
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
@@ -469,6 +541,7 @@
                 </ul>
             </nav>
         </div>
+    </header>
     </header>
     <!-- Hero Banner -->
     <div class="hero">

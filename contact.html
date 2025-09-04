@@ -45,55 +45,70 @@
             padding: 15px 5%;
         }
         /* Navbar */
+        /* Navbar */
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            /* keep in one line */
+            padding: 5px clamp(8px, 2vw, 15px);
+            /* auto-adjust padding */
+            /* ❌ Removed overflow: hidden because it blocked dropdowns */
         }
+        /* Logo */
         
         .logo {
             display: flex;
             flex-direction: column;
-            /* put text below image */
+            /* text below image */
             align-items: flex-start;
-            /* keep logo aligned to left */
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            /* scale smoothly */
             font-weight: bold;
             color: #d60000;
         }
         
         .logo img {
-            height: 66px;
-            /* adjust size */
+            height: clamp(35px, 6vw, 66px);
+            /* shrink with screen */
             width: auto;
             margin-bottom: 4px;
-            /* space between image and text */
         }
         
         .logo span {
-            font-size: 12px;
-            /* adjust text size */
+            font-size: clamp(10px, 1.5vw, 12px);
+            /* shrink smoothly */
             display: inline-block;
             text-align: center;
         }
+        /* Main Menu */
         
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: clamp(6px, 2vw, 20px);
+            /* shrink spacing */
+            flex-wrap: nowrap;
+            /* never wrap */
+            margin: 0;
+            padding: 0;
         }
         
         nav li {
             position: relative;
+            white-space: nowrap;
+            /* keep links on one line */
         }
         
         nav a {
             color: #d60000;
             font-weight: bold;
-            padding: 10px 15px;
+            font-size: clamp(12px, 1.8vw, 16px);
+            /* scale text */
+            padding: clamp(5px, 1vw, 10px) clamp(6px, 1.5vw, 15px);
+            /* scale padding */
             display: block;
             transition: all 0.3s ease;
         }
@@ -103,6 +118,7 @@
             color: #fff;
             border-radius: 5px;
         }
+        /* Dropdown */
         
         nav ul li ul {
             position: absolute;
@@ -112,16 +128,41 @@
             background: white;
             border: 1px solid #d60000;
             flex-direction: column;
-            z-index: 10;
+            z-index: 999;
+            /* keep above everything */
+            min-width: 150px;
+            /* ensure width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
-        nav ul li:hover ul {
+        nav ul li:hover>ul {
             display: flex;
+            animation: dropdownFade 0.25s ease-in-out;
         }
         
         nav ul li ul li a {
-            padding: 10px 15px;
+            padding: 8px 12px;
             white-space: nowrap;
+            font-size: clamp(12px, 1.6vw, 14px);
+            color: #d60000;
+            transition: background 0.3s;
+        }
+        
+        nav ul li ul li a:hover {
+            background: #d60000;
+            color: #fff;
+        }
+        /* Dropdown animation */
+        
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /*=============== Hero Section ===============*/
         
@@ -193,6 +234,8 @@
             }
         }
         /*=============== Contact Form ===============*/
+        /*=============== Contact Form ===============*/
+        /*=============== Headings in Red ===============*/
         
         .section {
             max-width: 1200px;
@@ -212,7 +255,7 @@
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
             animation: fadeSlide2 1s ease-out 0.4s forwards;
             opacity: 0;
         }
@@ -235,13 +278,16 @@
         
         form input:focus,
         form textarea:focus {
-            border-color: var(--red);
+            border-color: #a80000;
+            /* darker red */
             outline: none;
         }
         
         form button {
-            background: var(--red);
-            color: var(--white);
+            background: #d60000;
+            /* red background */
+            color: #fff;
+            /* white text */
             padding: 0.8rem 2rem;
             border: none;
             border-radius: 4px;
@@ -252,6 +298,7 @@
         
         form button:hover {
             background: #a80000;
+            /* darker red on hover */
             transform: translateY(-2px);
         }
         /*=============== Info Cards ===============*/
@@ -276,6 +323,17 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
+        .info-cards .info-card h4 {
+            color: #d60000;
+            /* red color */
+            font-size: 18px;
+            /* adjust size if needed */
+            margin: 0 0 5px 0;
+            /* spacing below header */
+            font-weight: bold;
+            /* optional */
+        }
+        
         .info-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
@@ -293,6 +351,25 @@
         .info-card h4 {
             margin-bottom: 0.3rem;
             color: var(--red);
+        }
+        /*=============== Animation ===============*/
+        
+        @keyframes fadeSlide2 {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /*=============== Responsive ===============*/
+        
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+            }
         }
         /*=============== Map Section ===============*/
         
@@ -746,7 +823,7 @@
                 </div>
             </div>
             <div class="info-card">
-                <img src="image/mail.webp" y alt="Email">
+                <img src="image/mail.webp" alt="Email">
                 <div>
                     <h4>Email</h4>
                     <p>virginfinance17@gmail.com</p>
