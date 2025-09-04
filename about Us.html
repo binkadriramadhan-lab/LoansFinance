@@ -200,7 +200,6 @@
         .hero {
             background: url('image/bk2.png') center center / cover no-repeat;
             color: #ffffff;
-            /* fallback if var(--white) is undefined */
             height: 400px;
             display: flex;
             align-items: center;
@@ -208,6 +207,10 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            /* hide hero until fade-in */
+            animation: fadeInHero 0.8s ease forwards;
+            /* fade in hero first */
         }
         
         .hero::before {
@@ -215,7 +218,6 @@
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.4);
-            /* dark overlay for better text contrast */
             z-index: 1;
         }
         
@@ -223,17 +225,28 @@
             font-size: 3rem;
             padding: 1rem 2rem;
             border-radius: 10px;
-            animation: fadeIn 2s ease-in-out;
-            z-index: 2;
             position: relative;
-            background: transparent;
-            /* removed black box effect */
+            z-index: 2;
             color: #fff;
+            background: transparent;
             backdrop-filter: blur(3px);
-            /* optional modern text enhancement */
+            opacity: 0;
+            animation: fadeInText 1s ease forwards;
+            animation-delay: 0.8s;
+            /* start after hero fade */
+        }
+        /* Fade-in animations */
+        
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
         
-        @keyframes fadeIn {
+        @keyframes fadeInText {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -533,7 +546,7 @@
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
                             <li><a href="Events.html">Events</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                            <li><a href="#">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
                     <li><a href="news.html">News</a></li>

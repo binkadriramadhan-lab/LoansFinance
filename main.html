@@ -188,27 +188,17 @@
             overflow: hidden;
         }
         
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-        }
-        
         .slides {
             position: relative;
             width: 100%;
             height: 100%;
         }
-        /* Slides as background containers */
         
         .slide {
             position: absolute;
             width: 100%;
             height: 100%;
             opacity: 0;
-            background-size: cover;
-            background-position: center;
-            animation: fadeSlide 24s infinite;
             transition: opacity 1s ease-in-out;
             display: flex;
             flex-direction: column;
@@ -218,21 +208,30 @@
             color: white;
             text-align: center;
             box-sizing: border-box;
+            will-change: opacity;
         }
-        /* Set background images */
+        
+        .slide-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+        }
         
         .slide1 {
-            background-image: url('image/bk10.png');
+            animation: fadeSlide 24s infinite;
             animation-delay: 0s;
         }
         
         .slide2 {
-            background-image: url('image/bk12.png');
+            animation: fadeSlide 24s infinite;
             animation-delay: 8s;
         }
         
         .slide3 {
-            background-image: url('image/bk13.png');
+            animation: fadeSlide 24s infinite;
             animation-delay: 16s;
         }
         
@@ -250,17 +249,16 @@
                 opacity: 0;
             }
         }
-        /* Caption Styling with smooth fade and slide */
         
         .caption {
             max-width: 700px;
             opacity: 0;
             transform: translateY(30px);
-            animation: captionFadeSlide 24s ease-in-out infinite;
+            animation: captionFadeSlide 8s ease-in-out infinite;
+            /* Changed duration to match slide */
             animation-fill-mode: forwards;
             padding: 0 20px;
         }
-        /* Sync captions with slides */
         
         .slide1 .caption {
             animation-delay: 0s;
@@ -276,16 +274,18 @@
         
         @keyframes captionFadeSlide {
             0%,
-            40%,
+            80%,
             100% {
                 opacity: 0;
                 transform: translateY(30px);
             }
+            /* fade out before next slide */
             10%,
-            30% {
+            70% {
                 opacity: 1;
                 transform: translateY(0);
             }
+            /* fade in early */
         }
         
         .caption h2 {
@@ -309,9 +309,8 @@
         .newsletter {
             padding: 60px 5%;
         }
-        /* Features Section */
         
-        .features {
+        Features Section */ .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
@@ -1017,7 +1016,7 @@
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
                             <li><a href="Events.html">Events</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                            <li><a href="#">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
                     <li><a href="news.html">News</a></li>
@@ -1030,18 +1029,21 @@
     <section class="hero">
         <div class="slides">
             <div class="slide slide1">
+                <img src="image/bk10.png" alt="Empowering Communities" class="slide-img">
                 <div class="caption">
                     <h2>Empowering Communities</h2>
                     <p>Supporting Ugandans through financial inclusion.</p>
                 </div>
             </div>
             <div class="slide slide2">
+                <img src="image/bk12.png" alt="Accessible Loans" class="slide-img">
                 <div class="caption">
                     <h2>Accessible Loans</h2>
                     <p>Flexible and affordable lending for everyone.</p>
                 </div>
             </div>
             <div class="slide slide3">
+                <img src="image/bk13.png" alt="Grow with VIRGIN FINANCE" class="slide-img">
                 <div class="caption">
                     <h2>Grow with VIRGIN FINANCE</h2>
                     <p>Saving for a brighter future.</p>
@@ -1286,6 +1288,70 @@
             </a>
         </div>
     </div>
+</body>
+<script src="script.js"></script>
+
+</html>
+<script src="script.js"></script>
+
+</html>
+<li><a href="contact.html">Contacts</a></li>
+</ul>
+</div>
+
+<!-- Newsletter -->
+<div class="footer-col">
+    <h3>Newsletter
+        <div class="underline"><span></span></div>
+    </h3>
+    <form action="#">
+        <div class="newsletter-input">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Enter your email id" required />
+            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </form>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="https://wa.me/256701234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+</div>
+
+</div>
+</footer>
+
+
+<div class="chat-container">
+    <!-- Hidden checkbox controls toggle -->
+    <input type="checkbox" id="chat-toggle" aria-label="Toggle chat options" />
+    <!-- Label styled as chat button -->
+    <label for="chat-toggle" class="chat-btn" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="chat-dropdown">
+    💬
+  </label>
+    <!-- Dropdown panel -->
+    <div class="chat-dropdown" id="chat-dropdown" role="menu" aria-label="Chat contact options">
+        <a href="https://wa.me/256777347950" target="_blank" rel="noopener noreferrer" role="menuitem" aria-label="Chat on WhatsApp" tabindex="-1">
+            <!-- WhatsApp SVG icon -->
+            <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20.52 3.48A11.908 11.908 0 0 0 3.47 20.5L2 22l1.52-1.47a11.913 11.913 0 0 0 17-17zM12 20a8 8 0 0 1-4.32-1.22l-.31-.19-3.1.82.83-3.02-.2-.31A8 8 0 1 1 12 20zm3.46-5.18c-.2-.1-1.18-.58-1.36-.64-.18-.06-.31-.1-.44.1s-.5.64-.61.78c-.11.15-.22.17-.42.06a7.1 7.1 0 0 1-2.09-1.29 7.95 7.95 0 0 1-1.48-1.83c-.15-.25 0-.39.11-.5.11-.11.24-.29.36-.43.12-.14.16-.25.24-.41a.5.5 0 0 0 0-.43c-.06-.14-.44-1.07-.6-1.46-.16-.38-.33-.33-.44-.34l-.38-.01a.6.6 0 0 0-.43.2c-.15.16-.6.59-.6 1.43s.62 1.66.7 1.78c.08.12 1.21 1.84 2.93 2.58a4.25 4.25 0 0 0 2.12.39 2.07 2.07 0 0 0 1.57-1.02c.13-.23.13-.43.09-.48-.04-.05-.18-.08-.38-.18z"/>
+      </svg>
+        </a>
+        <a href="sms:256759324704" role="menuitem" aria-label="Send SMS" tabindex="-1">
+            <!-- SMS icon -->
+            <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 6h16l-8 5-8-5zm0 12V8l6.4 4 1.6 1 1.6-1 6.4-4v10H4z"/>
+      </svg>
+        </a>
+        <a href="tel:256789144751" role="menuitem" aria-label="Call phone number" tabindex="-1">
+            <!-- Call icon -->
+            <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.39 11.39 0 0 0 3.58.57 1 1 0 0 1 1 1v3.54a1 1 0 0 1-1 1A17.91 17.91 0 0 1 3 5a1 1 0 0 1 1-1h3.54a1 1 0 0 1 1 1 11.39 11.39 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11z"/>
+      </svg>
+        </a>
+    </div>
+</div>
 </body>
 <script src="script.js"></script>
 

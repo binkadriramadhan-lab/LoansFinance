@@ -133,25 +133,32 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            opacity: 0;
+            /* hide until fade-in */
+            animation: fadeInHero 0.8s ease forwards;
+            /* fade in hero */
         }
+        /* Optional overlay */
         
         .hero::after {
             content: '';
             position: absolute;
             inset: 0;
         }
+        /* Hero content container */
         
         .hero-content {
             position: relative;
             color: #fff;
-            /* White text */
             max-width: 700px;
             padding: 0 1rem;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.8s;
+            /* start after hero fade-in */
         }
-        /* Title animation */
+        /* Title */
         
         .hero-content h1 {
             font-size: 3rem;
@@ -160,19 +167,31 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 1.2s ease forwards;
+            animation-delay: 0.9s;
+            /* slight delay after container */
         }
-        /* Paragraph animation (slight delay for staggered effect) */
+        /* Paragraph */
         
         .hero-content p {
             font-size: 1.25rem;
             color: #ffffff;
-            /* White text */
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 1.5s ease forwards;
+            animation-delay: 1.1s;
+            /* slight delay after h1 */
         }
-        /* Keyframes for smooth text animation */
+        /* Keyframes for fade-in */
+        
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
         
         @keyframes fadeInUp {
             0% {
@@ -690,7 +709,7 @@
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
                             <li><a href="Events.html">Events</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                            <li><a href="#">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
                     <li><a href="news.html">News</a></li>

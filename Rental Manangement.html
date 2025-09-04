@@ -48,40 +48,71 @@
             padding: 15px 5%;
         }
         /* Navbar */
-        /* Navbar container */
+        /* Navbar */
         
         .navbar {
             display: flex;
-            justify-content: center;
-            /* center all links horizontally */
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
-            /* space between links */
-            background: #fff;
-            padding: 10px 0;
+            flex-wrap: nowrap;
+            /* keep in one line */
+            padding: 5px clamp(8px, 2vw, 15px);
+            /* auto-adjust padding */
+            /* ❌ Removed overflow: hidden because it blocked dropdowns */
         }
-        /* Links */
+        /* Logo */
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            /* text below image */
+            align-items: flex-start;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            /* scale smoothly */
+            font-weight: bold;
+            color: #d60000;
+        }
+        
+        .logo img {
+            height: clamp(35px, 6vw, 66px);
+            /* shrink with screen */
+            width: auto;
+            margin-bottom: 4px;
+        }
+        
+        .logo span {
+            font-size: clamp(10px, 1.5vw, 12px);
+            /* shrink smoothly */
+            display: inline-block;
+            text-align: center;
+        }
+        /* Main Menu */
         
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
-            /* horizontal spacing */
+            gap: clamp(6px, 2vw, 20px);
+            /* shrink spacing */
+            flex-wrap: nowrap;
+            /* never wrap */
             margin: 0;
             padding: 0;
         }
         
         nav li {
             position: relative;
+            white-space: nowrap;
+            /* keep links on one line */
         }
         
         nav a {
             color: #d60000;
-            /* red text */
             font-weight: bold;
-            font-size: 16px;
-            padding: 5px 10px;
-            text-decoration: none;
+            font-size: clamp(12px, 1.8vw, 16px);
+            /* scale text */
+            padding: clamp(5px, 1vw, 10px) clamp(6px, 1.5vw, 15px);
+            /* scale padding */
+            display: block;
             transition: all 0.3s ease;
         }
         
@@ -90,53 +121,50 @@
             color: #fff;
             border-radius: 5px;
         }
-        /* Dropdown menu */
+        /* Dropdown */
         
         nav ul li ul {
             position: absolute;
             top: 100%;
             left: 0;
             display: none;
-            flex-direction: column;
             background: white;
             border: 1px solid #d60000;
-            min-width: 150px;
+            flex-direction: column;
             z-index: 999;
+            /* keep above everything */
+            min-width: 150px;
+            /* ensure width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         nav ul li:hover>ul {
             display: flex;
+            animation: dropdownFade 0.25s ease-in-out;
         }
         
         nav ul li ul li a {
-            color: #d60000;
             padding: 8px 12px;
-            font-size: 14px;
+            white-space: nowrap;
+            font-size: clamp(12px, 1.6vw, 14px);
+            color: #d60000;
+            transition: background 0.3s;
         }
         
         nav ul li ul li a:hover {
             background: #d60000;
             color: #fff;
         }
-        /* Keep it horizontal on mobile */
+        /* Dropdown animation */
         
-        @media (max-width: 768px) {
-            .navbar,
-            nav ul {
-                justify-content: center;
-                flex-wrap: nowrap;
-                gap: 15px;
+        @keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
             }
-            nav a {
-                font-size: 14px;
-                padding: 5px 8px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 12px;
-                padding: 4px 6px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
         /* Hero Section */
@@ -146,12 +174,22 @@
             color: white;
             text-align: center;
             padding: 6rem 2rem;
+            opacity: 0;
+            /* hide until visible */
+            animation: fadeInHero 0.8s ease forwards;
+            /* fade in hero */
         }
+        /* Heading */
         
         .hero h1 {
             font-size: 3rem;
-            animation: slideIn 1s ease-in;
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: slideIn 1s ease forwards;
+            animation-delay: 0.8s;
+            /* start after hero fades in */
         }
+        /* Paragraph */
         
         .hero p {
             font-size: 1.2rem;
@@ -159,6 +197,32 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 1s ease forwards;
+            animation-delay: 1s;
+            /* slightly after h1 */
+        }
+        /* Keyframes */
+        
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Section Base Styles */
         
@@ -300,7 +364,7 @@
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
                             <li><a href="Events.html">Events</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                            <li><a href="#">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
                     <li><a href="news.html">News</a></li>

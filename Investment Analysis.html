@@ -190,18 +190,43 @@
             color: var(--white);
             text-align: center;
             padding: 80px 20px;
-            animation: fadeIn 1.5s ease-in-out;
+            opacity: 0;
+            /* hide hero until fade in */
+            animation: fadeInHero 1.5s ease-in-out forwards;
         }
+        /* Keyframe for hero fade-in */
+        
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        /* Heading */
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.8s;
+            /* start after hero fade */
         }
+        /* Paragraph */
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1s;
+            /* after h1 */
         }
+        /* Button */
         
         .hero .btn {
             display: inline-block;
@@ -211,6 +236,11 @@
             border-radius: 30px;
             font-weight: bold;
             text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1.2s;
+            /* after paragraph */
             transition: 0.3s;
         }
         
@@ -218,6 +248,18 @@
             background: var(--red);
             color: var(--white);
             border: 2px solid var(--white);
+        }
+        /* Keyframes for fade-in up animation */
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Features Section */
         
@@ -378,7 +420,7 @@
                             <li><a href="Investment Analysis.html">Investment Analysis</a></li>
                             <li><a href="Forex exchange.html">Forex Exchange</a></li>
                             <li><a href="Events.html">Events</a></li>
-                            <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
+                            <li><a href="#">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
                     <li><a href="news.html">News</a></li>

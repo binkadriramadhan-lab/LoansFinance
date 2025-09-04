@@ -169,6 +169,10 @@
             text-align: center;
             color: #fff;
             position: relative;
+            opacity: 0;
+            /* hide hero until fade-in */
+            animation: fadeInHero 0.8s ease forwards;
+            /* fade in hero first */
         }
         
         .hero::after {
@@ -183,6 +187,10 @@
             max-width: 800px;
             margin: auto;
             z-index: 2;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 0.8s;
+            /* start after hero fade-in */
         }
         
         .hero h1 {
@@ -190,22 +198,27 @@
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 0.9s;
+            /* slight delay after container */
         }
         
         .hero p {
             font-size: 1.2rem;
             opacity: 0;
-            animation: fadeSlideIn 1s ease 0.5s forwards;
-            /* delay so paragraph appears after title */
+            animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 1.1s;
+            /* appear after h1 */
         }
-        /* Section Title */
+        /* Section title */
         
         h2.section-title {
             text-align: center;
             margin: 2rem 0 1rem;
             color: #d60000;
             opacity: 0;
-            animation: fadeSlideIn 1s ease 0.2s forwards;
+            animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 0.2s;
+            /* section title fade slightly delayed */
         }
         
         p.section-subtitle {
@@ -213,7 +226,30 @@
             margin-bottom: 2rem;
             color: #0b0d0b;
             opacity: 0;
-            animation: fadeSlideIn 1s ease 0.4s forwards;
+            animation: fadeSlideIn 1s ease forwards;
+            animation-delay: 0.4s;
+            /* subtitle after title */
+        }
+        /* Keyframes */
+        
+        @keyframes fadeInHero {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         /* Main Cards */
         
@@ -367,7 +403,7 @@
                             <li><a href="lT.html">Financial Banks Equipments Supply</a></li>
                         </ul>
                     </li>
-                    <li><a href="news.html">News</a></li>
+                    <li><a href="#">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
